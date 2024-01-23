@@ -1,0 +1,6 @@
+@Elima.Template.WebApi_HostAddress = http://localhost:5163
+
+GET {{Elima.Template.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
