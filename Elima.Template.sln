@@ -15,15 +15,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{F6D67111-44EB-4DE5-9AFB-42F3EE6E20B4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elima.Template.BuildingBlocks.Application", "BuildingBlocks\Core\Elima.Template.BuildingBlocks.Application\Elima.Template.BuildingBlocks.Application.csproj", "{1E2C6F43-2CB8-4CF9-BEE4-8B25D0CF4796}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elima.Template.BuildingBlocks.Application", "Src\BuildingBlocks\Core\Elima.Template.BuildingBlocks.Application\Elima.Template.BuildingBlocks.Application.csproj", "{1E2C6F43-2CB8-4CF9-BEE4-8B25D0CF4796}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elima.Template.BuildingBlocks.Domain", "BuildingBlocks\Core\Elima.Template.BuildingBlocks.Domain\Elima.Template.BuildingBlocks.Domain.csproj", "{AD6BD21F-4EC2-4360-84FF-9D7D3B0EC05B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elima.Template.BuildingBlocks.Domain", "Src\BuildingBlocks\Core\Elima.Template.BuildingBlocks.Domain\Elima.Template.BuildingBlocks.Domain.csproj", "{AD6BD21F-4EC2-4360-84FF-9D7D3B0EC05B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elima.Template.BuildingBlocks.Infrastructure", "BuildingBlocks\Infrastructure\Elima.Template.BuildingBlocks.Infrastructure\Elima.Template.BuildingBlocks.Infrastructure.csproj", "{DFCD5CB6-E32B-4D72-9D7A-2F0A20AADDD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elima.Template.BuildingBlocks.Infrastructure", "Src\BuildingBlocks\Infrastructure\Elima.Template.BuildingBlocks.Infrastructure\Elima.Template.BuildingBlocks.Infrastructure.csproj", "{DFCD5CB6-E32B-4D72-9D7A-2F0A20AADDD1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elima.Template.BuildingBlocks.Persistence", "BuildingBlocks\Infrastructure\Elima.Template.BuildingBlocks.Persistence\Elima.Template.BuildingBlocks.Persistence.csproj", "{EB8A1E20-C292-483F-99F9-E4967A9B06C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elima.Template.BuildingBlocks.Persistence", "Src\BuildingBlocks\Infrastructure\Elima.Template.BuildingBlocks.Persistence\Elima.Template.BuildingBlocks.Persistence.csproj", "{EB8A1E20-C292-483F-99F9-E4967A9B06C0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elima.Template.BuildingBlocks.Presentation", "BuildingBlocks\Presentation\Elima.Template.BuildingBlocks.Presentation\Elima.Template.BuildingBlocks.Presentation.csproj", "{52E8311E-5A72-4C5A-AAC1-C71B543489A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elima.Template.BuildingBlocks.Presentation", "Src\BuildingBlocks\Presentation\Elima.Template.BuildingBlocks.Presentation\Elima.Template.BuildingBlocks.Presentation.csproj", "{52E8311E-5A72-4C5A-AAC1-C71B543489A1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{8102D132-03E6-4482-9188-6521B3A19242}"
 EndProject
@@ -35,26 +35,31 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{21EF0E26-5F57-44E7-96C2-6DA0CD361C42}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elima.Template.FirstModule.Application", "Modules\FirstModule\Core\Elima.Template.FirstModule.Application\Elima.Template.FirstModule.Application.csproj", "{05C57DFC-596B-4A1D-BEB5-B99ECAC83841}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elima.Template.FirstModule.Application", "Src\Modules\FirstModule\Core\Elima.Template.FirstModule.Application\Elima.Template.FirstModule.Application.csproj", "{05C57DFC-596B-4A1D-BEB5-B99ECAC83841}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elima.Template.FirstModule.Domain", "Modules\FirstModule\Core\Elima.Template.FirstModule.Domain\Elima.Template.FirstModule.Domain.csproj", "{95FFDE69-E6BA-4AF0-83A7-50DF7E6B2C25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elima.Template.FirstModule.Domain", "Src\Modules\FirstModule\Core\Elima.Template.FirstModule.Domain\Elima.Template.FirstModule.Domain.csproj", "{95FFDE69-E6BA-4AF0-83A7-50DF7E6B2C25}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elima.Template.FirstModule.Infrastructure", "Modules\FirstModule\Infrastructure\Elima.Template.FirstModule.Infrastructure\Elima.Template.FirstModule.Infrastructure.csproj", "{9D545FCE-66C5-4760-B5BC-5A464090EF8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elima.Template.FirstModule.Infrastructure", "Src\Modules\FirstModule\Infrastructure\Elima.Template.FirstModule.Infrastructure\Elima.Template.FirstModule.Infrastructure.csproj", "{9D545FCE-66C5-4760-B5BC-5A464090EF8E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elima.Template.FirstModule.Persistence", "Modules\FirstModule\Infrastructure\Elima.Template.FirstModule.Persistence\Elima.Template.FirstModule.Persistence.csproj", "{D050E533-09A0-4255-85D8-F924CA8D8E73}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elima.Template.FirstModule.Persistence", "Src\Modules\FirstModule\Infrastructure\Elima.Template.FirstModule.Persistence\Elima.Template.FirstModule.Persistence.csproj", "{D050E533-09A0-4255-85D8-F924CA8D8E73}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elima.Template.FirstModule.Presention", "Modules\FirstModule\Presentation\Elima.Template.FirstModule.Presention\Elima.Template.FirstModule.Presention.csproj", "{BC16C20A-09EF-46A5-AB38-1218260931CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elima.Template.FirstModule.Presention", "Src\Modules\FirstModule\Presentation\Elima.Template.FirstModule.Presention\Elima.Template.FirstModule.Presention.csproj", "{BC16C20A-09EF-46A5-AB38-1218260931CF}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{AE0E13EE-C14C-46D6-9AA7-2A96250533CE}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{6BD20EEE-3EDC-4D80-B8BE-D4084ED7F2BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elima.Common.Modularity", "Common\Elima.Common.Modularity\Elima.Common.Modularity.csproj", "{9E916935-BD29-4334-926C-9DFD3420C4DA}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{3E51E77E-8F3D-416A-AB96-D57695A675F7}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4D0B7673-1B63-459D-86F3-6CD6C4B324C5}"
-	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
-	EndProjectSection
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elima.Common", "Common\Elima.Common\Elima.Common.csproj", "{E8B601E1-6F5A-4CDB-8915-C4C101163C7D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elima.Common", "Common\Elima.Common\Elima.Common.csproj", "{930E63C3-58E6-445A-BF5E-68E11A1D4B8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elima.Common.Modularity", "Common\Elima.Common.Modularity\Elima.Common.Modularity.csproj", "{BABCC7BB-BD65-4F27-8A84-F8421F972B88}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elima.Common.EntityFramework", "Common\Elima.Common.EntityFramework\Elima.Common.EntityFramework.csproj", "{9B8F10F9-D846-4FBF-9F90-46758AA57615}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elima.Common.Domain", "Common\Elima.Common.Domain\Elima.Common.Domain.csproj", "{D491C57A-8548-4821-AF8A-8FDCBF1C7039}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elima.Common.Results", "Common\Elima.Common.Result\Elima.Common.Results.csproj", "{917C6D30-7CCE-42AF-A84D-8889E000C70E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elima.Common.Security", "Common\Elima.Common.Security\Elima.Common.Security.csproj", "{43A73276-D50A-495D-8C5E-ADF6509B2703}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -106,20 +111,37 @@ Global
 		{BC16C20A-09EF-46A5-AB38-1218260931CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC16C20A-09EF-46A5-AB38-1218260931CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC16C20A-09EF-46A5-AB38-1218260931CF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9E916935-BD29-4334-926C-9DFD3420C4DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9E916935-BD29-4334-926C-9DFD3420C4DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9E916935-BD29-4334-926C-9DFD3420C4DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9E916935-BD29-4334-926C-9DFD3420C4DA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{930E63C3-58E6-445A-BF5E-68E11A1D4B8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{930E63C3-58E6-445A-BF5E-68E11A1D4B8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{930E63C3-58E6-445A-BF5E-68E11A1D4B8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{930E63C3-58E6-445A-BF5E-68E11A1D4B8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8B601E1-6F5A-4CDB-8915-C4C101163C7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8B601E1-6F5A-4CDB-8915-C4C101163C7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8B601E1-6F5A-4CDB-8915-C4C101163C7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8B601E1-6F5A-4CDB-8915-C4C101163C7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BABCC7BB-BD65-4F27-8A84-F8421F972B88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BABCC7BB-BD65-4F27-8A84-F8421F972B88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BABCC7BB-BD65-4F27-8A84-F8421F972B88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BABCC7BB-BD65-4F27-8A84-F8421F972B88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B8F10F9-D846-4FBF-9F90-46758AA57615}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B8F10F9-D846-4FBF-9F90-46758AA57615}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B8F10F9-D846-4FBF-9F90-46758AA57615}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B8F10F9-D846-4FBF-9F90-46758AA57615}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D491C57A-8548-4821-AF8A-8FDCBF1C7039}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D491C57A-8548-4821-AF8A-8FDCBF1C7039}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D491C57A-8548-4821-AF8A-8FDCBF1C7039}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D491C57A-8548-4821-AF8A-8FDCBF1C7039}.Release|Any CPU.Build.0 = Release|Any CPU
+		{917C6D30-7CCE-42AF-A84D-8889E000C70E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{917C6D30-7CCE-42AF-A84D-8889E000C70E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{917C6D30-7CCE-42AF-A84D-8889E000C70E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{917C6D30-7CCE-42AF-A84D-8889E000C70E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43A73276-D50A-495D-8C5E-ADF6509B2703}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43A73276-D50A-495D-8C5E-ADF6509B2703}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43A73276-D50A-495D-8C5E-ADF6509B2703}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43A73276-D50A-495D-8C5E-ADF6509B2703}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{DE409E19-4CA2-4652-8E8D-19D4E878FE68} = {97FAF2EA-8197-4DCC-B58D-03D087183BDA}
+		{8B8F5A13-5E5D-4603-8BAB-8AA0F1326C97} = {6BD20EEE-3EDC-4D80-B8BE-D4084ED7F2BB}
 		{0960D87C-5D1D-4A21-A9E6-4A5F74E662F2} = {8B8F5A13-5E5D-4603-8BAB-8AA0F1326C97}
 		{85F226F6-00E1-4DE6-8534-C3F21A3F2052} = {8B8F5A13-5E5D-4603-8BAB-8AA0F1326C97}
 		{F6D67111-44EB-4DE5-9AFB-42F3EE6E20B4} = {8B8F5A13-5E5D-4603-8BAB-8AA0F1326C97}
@@ -128,6 +150,7 @@ Global
 		{DFCD5CB6-E32B-4D72-9D7A-2F0A20AADDD1} = {85F226F6-00E1-4DE6-8534-C3F21A3F2052}
 		{EB8A1E20-C292-483F-99F9-E4967A9B06C0} = {85F226F6-00E1-4DE6-8534-C3F21A3F2052}
 		{52E8311E-5A72-4C5A-AAC1-C71B543489A1} = {F6D67111-44EB-4DE5-9AFB-42F3EE6E20B4}
+		{8102D132-03E6-4482-9188-6521B3A19242} = {6BD20EEE-3EDC-4D80-B8BE-D4084ED7F2BB}
 		{5456698D-C752-4E32-A303-EBFA6932B41D} = {8102D132-03E6-4482-9188-6521B3A19242}
 		{29E5A658-5B15-421B-8205-72A4CD92F47A} = {5456698D-C752-4E32-A303-EBFA6932B41D}
 		{903992CB-A193-4019-9C84-1B012E18970A} = {5456698D-C752-4E32-A303-EBFA6932B41D}
@@ -137,8 +160,12 @@ Global
 		{9D545FCE-66C5-4760-B5BC-5A464090EF8E} = {903992CB-A193-4019-9C84-1B012E18970A}
 		{D050E533-09A0-4255-85D8-F924CA8D8E73} = {903992CB-A193-4019-9C84-1B012E18970A}
 		{BC16C20A-09EF-46A5-AB38-1218260931CF} = {21EF0E26-5F57-44E7-96C2-6DA0CD361C42}
-		{9E916935-BD29-4334-926C-9DFD3420C4DA} = {AE0E13EE-C14C-46D6-9AA7-2A96250533CE}
-		{930E63C3-58E6-445A-BF5E-68E11A1D4B8F} = {AE0E13EE-C14C-46D6-9AA7-2A96250533CE}
+		{E8B601E1-6F5A-4CDB-8915-C4C101163C7D} = {3E51E77E-8F3D-416A-AB96-D57695A675F7}
+		{BABCC7BB-BD65-4F27-8A84-F8421F972B88} = {3E51E77E-8F3D-416A-AB96-D57695A675F7}
+		{9B8F10F9-D846-4FBF-9F90-46758AA57615} = {3E51E77E-8F3D-416A-AB96-D57695A675F7}
+		{D491C57A-8548-4821-AF8A-8FDCBF1C7039} = {3E51E77E-8F3D-416A-AB96-D57695A675F7}
+		{917C6D30-7CCE-42AF-A84D-8889E000C70E} = {3E51E77E-8F3D-416A-AB96-D57695A675F7}
+		{43A73276-D50A-495D-8C5E-ADF6509B2703} = {3E51E77E-8F3D-416A-AB96-D57695A675F7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9DD064A5-DEC9-4366-B9CF-12F4CB89E7B5}

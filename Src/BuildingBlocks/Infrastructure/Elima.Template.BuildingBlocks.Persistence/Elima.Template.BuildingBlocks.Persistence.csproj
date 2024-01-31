@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	  <InvariantGlobalization>true</InvariantGlobalization>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Common\Elima.Common.Modularity\Elima.Common.Modularity.csproj" />
+    <ProjectReference Include="..\..\..\Modules\FirstModule\Infrastructure\Elima.Template.FirstModule.Persistence\Elima.Template.FirstModule.Persistence.csproj" />
+  </ItemGroup>
+
+</Project>

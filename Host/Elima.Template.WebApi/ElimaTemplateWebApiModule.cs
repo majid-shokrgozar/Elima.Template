@@ -1,7 +1,9 @@
 ﻿using Elima.Common.Modularity;
+using Elima.Template.BuildingBlocks.Persistence;
 
 namespace Elima.Template.WebApi
 {
+    [DependsOn(typeof(ElimaBuildingBlocksPersistenceModule))]
     public class ElimaTemplateWebApiModule:ElimaModule
     {
         public override Task ConfigureServicesAsync(ServiceConfigurationContext context)
