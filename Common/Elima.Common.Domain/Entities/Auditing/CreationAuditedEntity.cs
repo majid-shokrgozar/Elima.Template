@@ -22,6 +22,7 @@ public abstract class CreationAuditedEntity : Entity, ICreationAuditedObject
 /// <typeparam name="TKey">Type of the primary key of the entity</typeparam>
 [Serializable]
 public abstract class CreationAuditedEntity<TKey> : Entity<TKey>, ICreationAuditedObject
+      where TKey : notnull
 {
     /// <inheritdoc />
     public virtual DateTime CreationTime { get; protected set; }

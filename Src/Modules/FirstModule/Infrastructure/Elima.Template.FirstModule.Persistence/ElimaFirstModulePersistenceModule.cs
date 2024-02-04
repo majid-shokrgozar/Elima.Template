@@ -1,4 +1,5 @@
-﻿using Elima.Common.Modularity;
+﻿using Elima.Common.EntityFramework.EntityFrameworkCore;
+using Elima.Common.Modularity;
 using Elima.Template.FirstModule.Domain.Samples;
 using Elima.Template.FirstModule.Persistence.EntityFramework;
 using Elima.Template.FirstModule.Persistence.Samples;
@@ -17,6 +18,8 @@ public class ElimaFirstModulePersistenceModule : ElimaModule
         {
             option.UseSqlServer(context.Configuration.GetConnectionString("Default"));
         });
+
+        //context.Services.AddScoped<IEfCoreDbContext,SampleModuleDbContext>();
 
         context.Services.AddTransient<ISampleRepository, EfCoreSampleRepository>();
         return base.ConfigureServicesAsync(context);

@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Elima.Common.EntityFramework.Uow;
 
-public interface ITransactionApi : IDisposable
+public interface ISupportsTransaction 
 {
     Task CommitAsync(CancellationToken cancellationToken = default);
 }

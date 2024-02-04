@@ -10,24 +10,12 @@ using JetBrains.Annotations;
 
 namespace Elima.Common.EntityFramework.EntityFrameworkCore;
 
-public interface IEfCoreDbContext : IDisposable,ITransactionApi
+public interface IEfCoreDbContext : ISupportsTransaction, ISupportsSavingChanges, IDisposable
 {
     EntityEntry<TEntity> Attach<TEntity>([NotNull] TEntity entity) where TEntity : class;
 
     EntityEntry Attach([NotNull] object entity);
 
-    int SaveChanges();
-
-    int SaveChanges(bool acceptAllChangesOnSuccess);
-
-    Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default);
-
-    Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// This method will call the DbContext <see cref="SaveChangesAsync(bool, CancellationToken)"/> method directly of EF Core, which doesn't apply concepts of abp.
-    /// </summary>
-    Task<int> SaveChangesOnDbContextAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default);
 
     DbSet<T> Set<T>()
         where T : class;

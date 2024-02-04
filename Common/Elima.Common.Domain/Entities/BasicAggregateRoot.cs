@@ -47,6 +47,7 @@ public abstract class BasicAggregateRoot : Entity,
 public abstract class BasicAggregateRoot<TKey> : Entity<TKey>,
     IAggregateRoot<TKey>,
     IGeneratesDomainEvents
+    where TKey : notnull
 {
     private readonly ICollection<DomainEventRecord> _distributedEvents = new Collection<DomainEventRecord>();
     private readonly ICollection<DomainEventRecord> _localEvents = new Collection<DomainEventRecord>();

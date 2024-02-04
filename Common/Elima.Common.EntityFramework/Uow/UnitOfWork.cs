@@ -13,16 +13,7 @@ namespace Elima.Common.EntityFramework.Uow;
 
 public class UnitOfWork : IUnitOfWork
 {
-    /// <summary>
-    /// Default: false.
-    /// </summary>
-    public static bool EnableObsoleteDbContextCreationWarning { get; } = false;
-
-    public const string UnitOfWorkReservationName = "_AbpActionUnitOfWork";
-
     public Guid Id { get; } = Guid.NewGuid();
-
-    public IUnitOfWorkOptions Options { get; private set; } = default!;
 
     public IUnitOfWork? Outer { get; private set; }
 
@@ -32,7 +23,6 @@ public class UnitOfWork : IUnitOfWork
 
     public bool IsCompleted { get; private set; }
 
-    public string? ReservationName { get; set; }
 
     protected List<Func<Task>> CompletedHandlers { get; } = new List<Func<Task>>();
     protected List<UnitOfWorkEventRecord> DistributedEvents { get; } = new List<UnitOfWorkEventRecord>();
@@ -43,47 +33,18 @@ public class UnitOfWork : IUnitOfWork
 
     protected IUnitOfWorkEventPublisher UnitOfWorkEventPublisher { get; }
 
-    [NotNull]
-    public Dictionary<string, object> Items { get; }
-
-    private readonly IEnumerable<IEfCoreDbContext> _databaseApis;
-    private readonly AbpUnitOfWorkDefaultOptions _defaultOptions;
+    private readonly IEnumerable<IEfCoreDbContext> _databases;
 
     private Exception? _exception;
     private bool _isCompleting;
     private bool _isRolledback;
 
     public UnitOfWork(
-        IUnitOfWorkEventPublisher unitOfWorkEventPublisher,
-        IOptions<AbpUnitOfWorkDefaultOptions> options,
-        IEnumerable<IEfCoreDbContext> databaseApis)
+        //IUnitOfWorkEventPublisher unitOfWorkEventPublisher,
+        IEnumerable<IEfCoreDbContext> databases)
     {
-        UnitOfWorkEventPublisher = unitOfWorkEventPublisher;
-        _defaultOptions = options.Value;
-
-        Items = new Dictionary<string, object>();
-        _databaseApis = databaseApis;
-    }
-
-    public virtual void Initialize(UnitOfWorkOptions options)
-    {
-        Check.NotNull(options, nameof(options));
-
-        if (Options != null)
-        {
-            throw new ElimaException("This unit of work has already been initialized.");
-        }
-
-        Options = _defaultOptions.Normalize(options.Clone());
-        IsReserved = false;
-    }
-
-    public virtual void Reserve(string reservationName)
-    {
-        Check.NotNullOrWhiteSpace(reservationName, nameof(reservationName));
-
-        ReservationName = reservationName;
-        IsReserved = true;
+        //UnitOfWorkEventPublisher = unitOfWorkEventPublisher;
+        _databases = databases;
     }
 
     public virtual void SetOuter(IUnitOfWork? outer)
@@ -98,20 +59,15 @@ public class UnitOfWork : IUnitOfWork
             return;
         }
 
-        foreach (var databaseApi in GetAllActiveDatabaseApis())
+        foreach (var databaseApi in GetAllActiveDatabases())
         {
             await databaseApi.SaveChangesAsync(cancellationToken);
         }
     }
 
-    public virtual IReadOnlyList<IEfCoreDbContext> GetAllActiveDatabaseApis()
+    public virtual IReadOnlyList<IEfCoreDbContext> GetAllActiveDatabases()
     {
-        return _databaseApis.ToImmutableList();
-    }
-
-    public virtual IReadOnlyList<IEfCoreDbContext> GetAllActiveTransactionApis()
-    {
-        return _databaseApis.ToImmutableList();
+        return _databases.ToImmutableList();
     }
 
     public virtual async Task CompleteAsync(CancellationToken cancellationToken = default)
@@ -234,7 +190,13 @@ public class UnitOfWork : IUnitOfWork
         Disposed.InvokeSafely(this, new UnitOfWorkEventArgs(this));
     }
 
-    public virtual void Dispose()
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    protected virtual void Dispose(bool disposing)
     {
         if (IsDisposed)
         {
@@ -245,6 +207,7 @@ public class UnitOfWork : IUnitOfWork
 
         DisposeTransactions();
 
+
         if (!IsCompleted || _exception != null)
         {
             OnFailed();
@@ -253,9 +216,51 @@ public class UnitOfWork : IUnitOfWork
         OnDisposed();
     }
 
+
+    protected virtual async Task RollbackAllAsync(CancellationToken cancellationToken)
+    {
+        foreach (var databaseApi in GetAllActiveDatabases())
+        {
+            if (databaseApi is ISupportsRollback supportsRollbackDatabaseApi)
+            {
+                try
+                {
+                    await supportsRollbackDatabaseApi.RollbackAsync(cancellationToken);
+                }
+                catch
+                {
+                    //ignore
+                }
+            }
+        }
+
+        foreach (var transactionApi in GetAllActiveDatabases())
+        {
+            if (transactionApi is ISupportsRollback supportsRollbackTransactionApi)
+            {
+                try
+                {
+                    await supportsRollbackTransactionApi.RollbackAsync(cancellationToken);
+                }
+                catch
+                {
+                    //ignore}
+                }
+            }
+        }
+    }
+
+    protected virtual async Task CommitTransactionsAsync(CancellationToken cancellationToken)
+    {
+        foreach (var transaction in GetAllActiveDatabases())
+        {
+            await transaction.CommitAsync(cancellationToken);
+        }
+    }
+
     private void DisposeTransactions()
     {
-        foreach (var transactionApi in GetAllActiveTransactionApis())
+        foreach (var transactionApi in GetAllActiveDatabases())
         {
             try
             {
@@ -274,44 +279,13 @@ public class UnitOfWork : IUnitOfWork
             throw new ElimaException("Completion has already been requested for this unit of work.");
         }
     }
-
-    protected virtual async Task RollbackAllAsync(CancellationToken cancellationToken)
-    {
-        foreach (var databaseApi in GetAllActiveDatabaseApis())
-        {
-            if (databaseApi is ISupportsRollback supportsRollbackDatabaseApi)
-            {
-                try
-                {
-                    await supportsRollbackDatabaseApi.RollbackAsync(cancellationToken);
-                }
-                catch { }
-            }
-        }
-
-        foreach (var transactionApi in GetAllActiveTransactionApis())
-        {
-            if (transactionApi is ISupportsRollback supportsRollbackTransactionApi)
-            {
-                try
-                {
-                    await supportsRollbackTransactionApi.RollbackAsync(cancellationToken);
-                }
-                catch { }
-            }
-        }
-    }
-
-    protected virtual async Task CommitTransactionsAsync(CancellationToken cancellationToken)
-    {
-        foreach (var transaction in GetAllActiveTransactionApis())
-        {
-            await transaction.CommitAsync(cancellationToken);
-        }
-    }
-
     public override string ToString()
     {
         return $"[UnitOfWork {Id}]";
+    }
+
+    ~UnitOfWork()
+    {
+        Dispose(false);
     }
 }

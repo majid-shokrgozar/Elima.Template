@@ -50,7 +50,7 @@ public static class ObjectHelper
             }
 
             if (ignoreAttributeTypes != null &&
-                ignoreAttributeTypes.Any(ignoreAttribute => propertyInfo.IsDefined(ignoreAttribute, true)))
+                Array.Exists(ignoreAttributeTypes, ignoreAttribute => propertyInfo.IsDefined(ignoreAttribute, true)))
             {
                 return null;
             }
