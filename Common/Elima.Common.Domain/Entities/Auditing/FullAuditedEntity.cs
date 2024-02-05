@@ -13,7 +13,7 @@ public abstract class FullAuditedEntity : AuditedEntity, IFullAuditedObject
     public virtual bool IsDeleted { get; set; }
 
     /// <inheritdoc />
-    public virtual Guid? DeleterId { get; set; }
+    public virtual string? DeleterId { get; set; }
 
     /// <inheritdoc />
     public virtual DateTime? DeletionTime { get; set; }
@@ -30,7 +30,7 @@ public abstract class FullAuditedEntity<TKey> : AuditedEntity<TKey>, IFullAudite
     public virtual bool IsDeleted { get; set; }
 
     /// <inheritdoc />
-    public virtual Guid? DeleterId { get; set; }
+    public virtual string? DeleterId { get; set; }
 
     /// <inheritdoc />
     public virtual DateTime? DeletionTime { get; set; }

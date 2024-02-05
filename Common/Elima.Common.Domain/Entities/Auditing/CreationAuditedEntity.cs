@@ -13,7 +13,7 @@ public abstract class CreationAuditedEntity : Entity, ICreationAuditedObject
     public virtual DateTime CreationTime { get; protected set; }
 
     /// <inheritdoc />
-    public virtual Guid? CreatorId { get; protected set; }
+    public virtual string? CreatorId { get; protected set; }
 }
 
 /// <summary>
@@ -28,7 +28,7 @@ public abstract class CreationAuditedEntity<TKey> : Entity<TKey>, ICreationAudit
     public virtual DateTime CreationTime { get; protected set; }
 
     /// <inheritdoc />
-    public virtual Guid? CreatorId { get; protected set; }
+    public virtual string? CreatorId { get; protected set; }
 
     protected CreationAuditedEntity()
     {

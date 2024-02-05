@@ -13,7 +13,7 @@ public abstract class AuditedEntity : CreationAuditedEntity, IAuditedObject
     public virtual DateTime? LastModificationTime { get; set; }
 
     /// <inheritdoc />
-    public virtual Guid? LastModifierId { get; set; }
+    public virtual string? LastModifierId { get; set; }
 }
 
 /// <summary>
@@ -27,7 +27,7 @@ public abstract class AuditedEntity<TKey> : CreationAuditedEntity<TKey>, IAudite
     public virtual DateTime? LastModificationTime { get; set; }
 
     /// <inheritdoc />
-    public virtual Guid? LastModifierId { get; set; }
+    public virtual string? LastModifierId { get; set; }
 
     protected AuditedEntity()
     {

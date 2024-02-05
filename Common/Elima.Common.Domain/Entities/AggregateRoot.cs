@@ -18,6 +18,7 @@ public abstract class AggregateRoot : BasicAggregateRoot,
 [Serializable]
 public abstract class AggregateRoot<TKey> : BasicAggregateRoot<TKey>,
     IHasConcurrencyStamp
+    where TKey : notnull
 {
     public virtual string ConcurrencyStamp { get; set; }
 

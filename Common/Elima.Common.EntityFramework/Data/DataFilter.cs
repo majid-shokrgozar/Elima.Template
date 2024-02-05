@@ -44,7 +44,7 @@ public class DataFilter : IDataFilter, ISingletonDependency
     {
         return (_filters.GetOrAdd(
             typeof(TFilter),
-            () => _serviceProvider.GetRequiredService<IDataFilter<TFilter>>()
+           _serviceProvider.GetRequiredService<IDataFilter<TFilter>>()
         ) as IDataFilter<TFilter>)!;
     }
 }

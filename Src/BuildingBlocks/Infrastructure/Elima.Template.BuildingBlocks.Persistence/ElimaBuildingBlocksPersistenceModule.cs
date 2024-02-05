@@ -1,4 +1,7 @@
-﻿using Elima.Common.EntityFramework.EntityFrameworkCore;
+﻿using Elima.Common.Domain.Entities.Auditing.Contracts;
+using Elima.Common.EntityFramework.Auditing;
+using Elima.Common.EntityFramework.Data;
+using Elima.Common.EntityFramework.EntityFrameworkCore;
 using Elima.Common.EntityFramework.Uow;
 using Elima.Common.Modularity;
 using Elima.Template.FirstModule.Persistence;
@@ -23,6 +26,18 @@ public class ElimaBuildingBlocksPersistenceModule : ElimaModule
 
             return new UnitOfWork(list);
         });
+
+        context.Services.AddSingleton(typeof(IDataFilter), typeof(DataFilter));
+        //context.Services.AddSingleton(typeof(IDataFilter<ISoftDelete>), typeof(DataFilter<ISoftDelete>));
+        context.Services.AddSingleton(typeof(IDataFilter<>), typeof(DataFilter<>));
+
+        context.Services.AddScoped<IAuditPropertySetter, AuditPropertySetter>();
+
+        context.Services.Configure<DataFilterOptions>(options =>
+        {
+            options.DefaultStates[typeof(ISoftDelete)] = new DataFilterState(isEnabled: true);
+        });
+
         return base.ConfigureServicesAsync(context);
     }
 }

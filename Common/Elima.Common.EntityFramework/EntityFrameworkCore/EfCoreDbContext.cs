@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -26,15 +27,27 @@ namespace Elima.Common.EntityFramework.EntityFrameworkCore;
 public abstract class EfCoreDbContext<TDbContext> : DbContext, IEfCoreDbContext, ITransientDependency
     where TDbContext : DbContext
 {
-    protected EfCoreDbContext(DbContextOptions<TDbContext> options)
+    protected EfCoreDbContext(
+        DbContextOptions<TDbContext> options,
+        ILogger<EfCoreDbContext<TDbContext>> logger,
+        IAuditPropertySetter auditPropertySetter, 
+        IDataFilter dataFilter 
+        )
         : base(options)
     {
+        _logger = logger;
+        _auditPropertySetter = auditPropertySetter;
+        _dataFilter = dataFilter;
+
+        ChangeTracker.CascadeDeleteTiming = CascadeTiming.OnSaveChanges;
+        ChangeTracker.Tracked += ChangeTracker_Tracked;
+        ChangeTracker.StateChanged += ChangeTracker_StateChanged;
     }
 
-    public IAuditPropertySetter AuditPropertySetter { get; set; }
-    public IDataFilter DataFilter { get; set; }
-    public ILogger<EfCoreDbContext<TDbContext>> Logger { get; set; }
-    protected virtual bool IsSoftDeleteFilterEnabled => DataFilter?.IsEnabled<ISoftDelete>() ?? false;
+    public readonly IAuditPropertySetter _auditPropertySetter;
+    public readonly ILogger<EfCoreDbContext<TDbContext>> _logger;
+    public readonly IDataFilter _dataFilter;
+    protected virtual bool IsSoftDeleteFilterEnabled => _dataFilter?.IsEnabled<ISoftDelete>() ?? false;
     public async Task CommitAsync(CancellationToken cancellationToken = default)
     {
         await this.Database.CommitTransactionAsync(cancellationToken);
@@ -67,7 +80,7 @@ public abstract class EfCoreDbContext<TDbContext> : DbContext, IEfCoreDbContext,
                     sb.AppendLine(entry.ToString());
                 }
 
-                Logger.LogWarning(sb.ToString());
+                _logger.LogWarning(sb.ToString());
             }
 
             throw new DbConcurrencyException(ex.Message, ex);
@@ -75,6 +88,26 @@ public abstract class EfCoreDbContext<TDbContext> : DbContext, IEfCoreDbContext,
         finally
         {
             ChangeTracker.AutoDetectChangesEnabled = true;
+        }
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        foreach (var entityType in modelBuilder.Model.GetEntityTypes())
+        {
+            ConfigureBasePropertiesMethodInfo
+                .MakeGenericMethod(entityType.ClrType)
+                .Invoke(this, new object[] { modelBuilder, entityType });
+
+            ConfigureValueConverterMethodInfo
+                .MakeGenericMethod(entityType.ClrType)
+                .Invoke(this, new object[] { modelBuilder, entityType });
+
+            ConfigureValueGeneratedMethodInfo
+                .MakeGenericMethod(entityType.ClrType)
+                .Invoke(this, new object[] { modelBuilder, entityType });
         }
     }
 
@@ -163,7 +196,7 @@ public abstract class EfCoreDbContext<TDbContext> : DbContext, IEfCoreDbContext,
             var filterExpression = CreateFilterExpression<TEntity>();
             if (filterExpression != null)
             {
-                modelBuilder.Entity<TEntity>().HasAbpQueryFilter(filterExpression);
+                modelBuilder.Entity<TEntity>().HasElimaQueryFilter(filterExpression);
             }
         }
     }
@@ -255,7 +288,7 @@ public abstract class EfCoreDbContext<TDbContext> : DbContext, IEfCoreDbContext,
 
     protected virtual void IncrementEntityVersionProperty(EntityEntry entry)
     {
-        AuditPropertySetter?.IncrementEntityVersionProperty(entry.Entity);
+        _auditPropertySetter?.IncrementEntityVersionProperty(entry.Entity);
     }
 
     protected virtual void SetConcurrencyStampIfNull(EntityEntry entry)
@@ -276,17 +309,17 @@ public abstract class EfCoreDbContext<TDbContext> : DbContext, IEfCoreDbContext,
 
     protected virtual void SetCreationAuditProperties(EntityEntry entry)
     {
-        AuditPropertySetter?.SetCreationProperties(entry.Entity);
+        _auditPropertySetter?.SetCreationProperties(entry.Entity);
     }
 
     protected virtual void SetDeletionAuditProperties(EntityEntry entry)
     {
-        AuditPropertySetter?.SetDeletionProperties(entry.Entity);
+        _auditPropertySetter?.SetDeletionProperties(entry.Entity);
     }
 
     protected virtual void SetModificationAuditProperties(EntityEntry entry)
     {
-        AuditPropertySetter?.SetModificationProperties(entry.Entity);
+        _auditPropertySetter?.SetModificationProperties(entry.Entity);
     }
 
     protected virtual bool ShouldFilterEntity<TEntity>(IMutableEntityType entityType) where TEntity : class
@@ -338,6 +371,35 @@ public abstract class EfCoreDbContext<TDbContext> : DbContext, IEfCoreDbContext,
         entity.ConcurrencyStamp = Guid.NewGuid().ToString("N");
     }
 
+    protected virtual void ConfigureValueConverter<TEntity>(ModelBuilder modelBuilder, IMutableEntityType mutableEntityType)
+       where TEntity : class
+    {
+        //if (mutableEntityType.BaseType == null &&
+        //    !typeof(TEntity).IsDefined(typeof(DisableDateTimeNormalizationAttribute), true) &&
+        //    !typeof(TEntity).IsDefined(typeof(OwnedAttribute), true) &&
+        //    !mutableEntityType.IsOwned())
+        //{
+        //    if (LazyServiceProvider == null || Clock == null)
+        //    {
+        //        return;
+        //    }
+
+        //    foreach (var property in mutableEntityType.GetProperties().
+        //                 Where(property => property.PropertyInfo != null &&
+        //                                   (property.PropertyInfo.PropertyType == typeof(DateTime) || property.PropertyInfo.PropertyType == typeof(DateTime?)) &&
+        //                                   property.PropertyInfo.CanWrite &&
+        //                                   ReflectionHelper.GetSingleAttributeOfMemberOrDeclaringTypeOrDefault<DisableDateTimeNormalizationAttribute>(property.PropertyInfo) == null))
+        //    {
+        //        modelBuilder
+        //            .Entity<TEntity>()
+        //            .Property(property.Name)
+        //            .HasConversion(property.ClrType == typeof(DateTime)
+        //                ? new AbpDateTimeValueConverter(Clock)
+        //                : new AbpNullableDateTimeValueConverter(Clock));
+        //    }
+        //}
+    }
+
     private void ApplyConceptEntity(EntityEntry entry)
     {
         switch (entry.State)
@@ -374,4 +436,25 @@ public abstract class EfCoreDbContext<TDbContext> : DbContext, IEfCoreDbContext,
         //    );
         //}
     }
+
+    private static readonly MethodInfo ConfigureBasePropertiesMethodInfo
+        = typeof(EfCoreDbContext<TDbContext>)
+            .GetMethod(
+                nameof(ConfigureBaseProperties),
+                BindingFlags.Instance | BindingFlags.NonPublic
+            )!;
+
+    private static readonly MethodInfo ConfigureValueConverterMethodInfo
+        = typeof(EfCoreDbContext<TDbContext>)
+            .GetMethod(
+                nameof(ConfigureValueConverter),
+                BindingFlags.Instance | BindingFlags.NonPublic
+            )!;
+
+    private static readonly MethodInfo ConfigureValueGeneratedMethodInfo
+        = typeof(EfCoreDbContext<TDbContext>)
+            .GetMethod(
+                nameof(ConfigureValueGenerated),
+                BindingFlags.Instance | BindingFlags.NonPublic
+            )!;
 }

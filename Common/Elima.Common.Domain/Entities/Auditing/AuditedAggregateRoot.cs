@@ -13,7 +13,7 @@ public abstract class AuditedAggregateRoot : CreationAuditedAggregateRoot, IAudi
     public virtual DateTime? LastModificationTime { get; set; }
 
     /// <inheritdoc />
-    public virtual Guid? LastModifierId { get; set; }
+    public virtual string? LastModifierId { get; set; }
 }
 
 /// <summary>
@@ -27,7 +27,7 @@ public abstract class AuditedAggregateRoot<TKey> : CreationAuditedAggregateRoot<
     public virtual DateTime? LastModificationTime { get; set; }
 
     /// <inheritdoc />
-    public virtual Guid? LastModifierId { get; set; }
+    public virtual string? LastModifierId { get; set; }
 
     protected AuditedAggregateRoot(TKey id)
         : base(id)

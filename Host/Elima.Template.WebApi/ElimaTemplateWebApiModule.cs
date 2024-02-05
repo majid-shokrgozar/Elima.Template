@@ -1,5 +1,7 @@
 ﻿using Elima.Common.Modularity;
+using Elima.Common.Security.Authentication;
 using Elima.Template.BuildingBlocks.Persistence;
+using Elima.Template.WebApi.Authorization;
 
 namespace Elima.Template.WebApi
 {
@@ -12,6 +14,10 @@ namespace Elima.Template.WebApi
 
             context.Services.AddEndpointsApiExplorer();
             context.Services.AddSwaggerGen();
+
+            context.Services.AddHttpContextAccessor();
+
+            context.Services.AddScoped<ICurrentUser, CurrentUser>();
 
             return Task.CompletedTask;
         }

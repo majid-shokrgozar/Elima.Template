@@ -4,6 +4,7 @@ using Elima.Template.FirstModule.Persistence.EntityFramework;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Elima.Template.FirstModule.Persistence.Migrations
 {
     [DbContext(typeof(SampleModuleDbContext))]
-    partial class SampleModuleDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240205063622_Change_Sample_FullAuditLogAggregation")]
+    partial class Change_Sample_FullAuditLogAggregation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,41 +31,29 @@ namespace Elima.Template.FirstModule.Persistence.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
                         .IsRequired()
-                        .HasMaxLength(40)
-                        .HasColumnType("nvarchar(40)")
-                        .HasColumnName("ConcurrencyStamp");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("CreationTime");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("CreatorId")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("CreatorId");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("DeleterId")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("DeleterId");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DeletionTime")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("DeletionTime");
+                        .HasColumnType("datetime2");
 
                     b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false)
-                        .HasColumnName("IsDeleted");
+                        .HasColumnType("bit");
 
                     b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("LastModificationTime");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("LastModifierId")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("LastModifierId");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()

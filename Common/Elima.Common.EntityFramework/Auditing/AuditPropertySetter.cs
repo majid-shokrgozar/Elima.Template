@@ -57,7 +57,7 @@ public class AuditPropertySetter : IAuditPropertySetter, ITransientDependency
 
     protected virtual void SetCreatorId(object targetObject)
     {
-        if (!CurrentUser.Id.HasValue)
+        if (!CurrentUser.HasUserId)
         {
             return;
         }
@@ -72,7 +72,7 @@ public class AuditPropertySetter : IAuditPropertySetter, ITransientDependency
 
         if (targetObject is IMayHaveCreator mayHaveCreatorObject)
         {
-            if (mayHaveCreatorObject.CreatorId.HasValue && mayHaveCreatorObject.CreatorId.Value != default)
+            if (!string.IsNullOrWhiteSpace(mayHaveCreatorObject.CreatorId))
             {
                 return;
             }
@@ -86,7 +86,7 @@ public class AuditPropertySetter : IAuditPropertySetter, ITransientDependency
                 return;
             }
 
-            ObjectHelper.TrySetProperty(mustHaveCreatorObject, x => x.CreatorId, () => CurrentUser.Id.Value);
+            ObjectHelper.TrySetProperty(mustHaveCreatorObject, x => x.CreatorId, () => CurrentUser.Id);
         }
     }
 
@@ -105,7 +105,7 @@ public class AuditPropertySetter : IAuditPropertySetter, ITransientDependency
             return;
         }
 
-        if (!CurrentUser.Id.HasValue)
+        if (!CurrentUser.HasUserId)
         {
             ObjectHelper.TrySetProperty(modificationAuditedObject, x => x.LastModifierId, () => null);
             return;
@@ -145,7 +145,7 @@ public class AuditPropertySetter : IAuditPropertySetter, ITransientDependency
             return;
         }
 
-        if (!CurrentUser.Id.HasValue)
+        if (!CurrentUser.HasUserId)
         {
             ObjectHelper.TrySetProperty(deletionAuditedObject, x => x.DeleterId, () => null);
             return;

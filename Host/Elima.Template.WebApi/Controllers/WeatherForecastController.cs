@@ -28,22 +28,27 @@ namespace Elima.Template.WebApi.Controllers
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
-        public async Task<IEnumerable<WeatherForecast>> Get()
+        public async Task<IEnumerable<Sample>> Get()
         {
-            await _sampleRepository.InsertAsync(new Sample()
+            var sample = await _sampleRepository.InsertAsync(new Sample()
             {
-                Name = "Test1",
-                CreateDate = DateOnly.FromDateTime(DateTime.Now),
-                CreateTime = TimeOnly.FromDateTime(DateTime.Now)
+                Name = "Test1"
             });
             await _unitOfWork.SaveChangesAsync();
+
+            sample.Name = "test" + DateTime.Now.ToString();
+            await _sampleRepository.UpdateAsync(sample);
+            await _unitOfWork.SaveChangesAsync();
+
+
+
+            await _sampleRepository.DeleteAsync(sample);
+            await _unitOfWork.SaveChangesAsync();
+
+
+
             var list = await _sampleRepository.GetListAsync();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
+            return list
             .ToArray();
         }
     }

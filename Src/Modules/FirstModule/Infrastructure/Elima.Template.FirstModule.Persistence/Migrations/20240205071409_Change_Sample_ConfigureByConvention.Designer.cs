@@ -4,6 +4,7 @@ using Elima.Template.FirstModule.Persistence.EntityFramework;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Elima.Template.FirstModule.Persistence.Migrations
 {
     [DbContext(typeof(SampleModuleDbContext))]
-    partial class SampleModuleDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240205071409_Change_Sample_ConfigureByConvention")]
+    partial class Change_Sample_ConfigureByConvention
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

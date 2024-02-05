@@ -13,7 +13,7 @@ public abstract class CreationAuditedAggregateRoot : AggregateRoot, ICreationAud
     public virtual DateTime CreationTime { get; protected set; }
 
     /// <inheritdoc />
-    public virtual Guid? CreatorId { get; protected set; }
+    public virtual string? CreatorId { get; protected set; }
 }
 
 /// <summary>
@@ -27,7 +27,7 @@ public abstract class CreationAuditedAggregateRoot<TKey> : AggregateRoot<TKey>, 
     public virtual DateTime CreationTime { get; set; }
 
     /// <inheritdoc />
-    public virtual Guid? CreatorId { get; set; }
+    public virtual string? CreatorId { get; set; }
 
     protected CreationAuditedAggregateRoot(TKey id)
         : base(id)

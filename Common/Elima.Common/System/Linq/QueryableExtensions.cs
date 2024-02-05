@@ -3,8 +3,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using JetBrains.Annotations;
 using System.Linq.Dynamic.Core;
+using Elima.Common;
 
-namespace Elima.Common.System.Linq;
+namespace System.Linq;
 
 /// <summary>
 /// Some useful extension methods for <see cref="IQueryable{T}"/>.

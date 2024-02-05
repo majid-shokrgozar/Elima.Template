@@ -23,5 +23,5 @@ public interface IMustHaveCreator
     /// <summary>
     /// Id of the creator.
     /// </summary>
-    Guid CreatorId { get; }
+    string CreatorId { get; }
 }

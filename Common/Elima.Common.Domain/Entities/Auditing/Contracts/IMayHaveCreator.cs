@@ -18,5 +18,5 @@ public interface IMayHaveCreator
     /// <summary>
     /// Id of the creator.
     /// </summary>
-    Guid? CreatorId { get; }
+    string? CreatorId { get; }
 }
