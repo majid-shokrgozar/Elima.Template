@@ -15,6 +15,7 @@ using Elima.Common.EntityFramework.Auditing;
 using Elima.Common.EntityFramework.Data;
 using Elima.Common.EntityFramework.EntityFrameworkCore.Modeling;
 using Elima.Common.EntityFramework.Uow;
+using Elima.Common.ExceptionHandling;
 using Elima.Common.Reflection;
 using Elima.Common.System;
 using Microsoft.EntityFrameworkCore;

@@ -1,7 +1,11 @@
-﻿using Elima.Common.Modularity;
+﻿using Elima.Common.ExceptionHandling;
+using Elima.Common.Modularity;
 using Elima.Common.Security.Authentication;
 using Elima.Template.BuildingBlocks.Persistence;
+using Elima.Template.BuildingBlocks.Presentation.ExceptionHandler;
+using Elima.Template.BuildingBlocks.Presentation.Middleware;
 using Elima.Template.WebApi.Authorization;
+using Microsoft.AspNetCore.HttpsPolicy;
 
 namespace Elima.Template.WebApi
 {
@@ -19,6 +23,11 @@ namespace Elima.Template.WebApi
 
             context.Services.AddScoped<ICurrentUser, CurrentUser>();
 
+            context.Services.AddTransient<IAuthorizationExceptionHandler, DefaultAuthorizationExceptionHandler>();
+            context.Services.AddTransient<IExceptionToErrorInfoConverter, DefaultExceptionToErrorInfoConverter>();
+            context.Services.AddTransient<IHttpExceptionStatusCodeFinder, DefaultHttpExceptionStatusCodeFinder>();
+            context.Services.AddTransient<AbpExceptionHandlingMiddleware>();
+
             return Task.CompletedTask;
         }
 
@@ -35,9 +44,11 @@ namespace Elima.Template.WebApi
 
             app.UseHttpsRedirection();
 
-            app.UseAuthorization();
+            //app.UseAuthorization();
 
             app.MapControllers();
+
+            app.UseMiddleware<AbpExceptionHandlingMiddleware>();
 
             return base.OnApplicationInitializationAsync(context);
         }

@@ -1,3 +1,4 @@
+using Elima.Common;
 using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Elima.Common.System;
+namespace System;
 
 /// <summary>
 /// Extension methods for String class.

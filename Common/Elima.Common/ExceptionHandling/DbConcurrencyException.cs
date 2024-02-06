@@ -1,9 +1,10 @@
 ﻿using System.Runtime.Serialization;
 using System;
 
-namespace Elima.Common.EntityFramework.EntityFrameworkCore
+namespace Elima.Common.ExceptionHandling
 {
-    public class DbConcurrencyException:ElimaException
+    [Serializable]
+    public class DbConcurrencyException : ElimaException
     {
         public DbConcurrencyException()
         {
@@ -22,7 +23,7 @@ namespace Elima.Common.EntityFramework.EntityFrameworkCore
 
         }
 
-        public DbConcurrencyException(SerializationInfo serializationInfo, StreamingContext context)
+        protected DbConcurrencyException(SerializationInfo serializationInfo, StreamingContext context)
             : base(serializationInfo, context)
         {
 

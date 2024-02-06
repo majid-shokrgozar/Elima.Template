@@ -22,6 +22,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Elima.Common.Modularity\Elima.Common.Modularity.csproj" />
     <ProjectReference Include="..\..\Src\BuildingBlocks\Infrastructure\Elima.Template.BuildingBlocks.Persistence\Elima.Template.BuildingBlocks.Persistence.csproj" />
+    <ProjectReference Include="..\..\Src\BuildingBlocks\Presentation\Elima.Template.BuildingBlocks.Presentation\Elima.Template.BuildingBlocks.Presentation.csproj" />
   </ItemGroup>
 
 </Project>
