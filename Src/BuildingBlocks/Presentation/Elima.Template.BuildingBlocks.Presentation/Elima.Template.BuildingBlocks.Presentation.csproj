@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Common\Elima.Common.Modularity\Elima.Common.Modularity.csproj" />
+    <ProjectReference Include="..\..\..\..\Common\Elima.Common.Modularity.Autofac\Elima.Common.Modularity.Autofac.csproj" />
     <ProjectReference Include="..\..\..\..\Common\Elima.Common.Security\Elima.Common.Security.csproj" />
     <ProjectReference Include="..\..\..\..\Common\Elima.Common\Elima.Common.csproj" />
   </ItemGroup>

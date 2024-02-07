@@ -1,3 +1,5 @@
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using Elima.Common.Modularity;
 namespace Elima.Template.WebApi
 {
@@ -6,6 +8,13 @@ namespace Elima.Template.WebApi
         public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+
+            builder.Host.ConfigureContainer<ContainerBuilder>(builder=> { 
+            
+                builder.RegisterAssemblyModules();
+            });
 
             await builder.AddApplicationAsync<ElimaTemplateWebApiModule>();
 

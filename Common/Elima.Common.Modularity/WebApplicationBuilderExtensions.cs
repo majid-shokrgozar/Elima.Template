@@ -13,6 +13,7 @@ public static class WebApplicationBuilderExtensions
             builder.Services,
             builder.Environment,
             builder.Configuration,
+            builder.Host,
             builder.Logging,
             builder.Metrics
             ));

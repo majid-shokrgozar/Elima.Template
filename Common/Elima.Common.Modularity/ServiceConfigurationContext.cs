@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.Metrics;
@@ -26,12 +27,14 @@ public class ServiceConfigurationContext
     /// </summary>
     public ConfigurationManager Configuration { get; private set; }
 
+    /// <summary>
+    /// </summary>
+    public ConfigureHostBuilder Host { get; private set; }
 
     /// <summary>
     /// A collection of logging providers for the application to compose. This is useful for adding new logging providers.
     /// </summary>
     public ILoggingBuilder Logging { get; private set; }
-
 
     /// <summary>
     /// Allows enabling metrics and directing their output.
@@ -48,22 +51,25 @@ public class ServiceConfigurationContext
     }
 
     public ServiceConfigurationContext(
-        [NotNull] IServiceCollection services, 
-        IWebHostEnvironment environment, 
-        ConfigurationManager configuration, 
-        ILoggingBuilder logging, 
-        IMetricsBuilder metrics)
+        [NotNull] IServiceCollection services,
+        IWebHostEnvironment environment,
+        ConfigurationManager configuration,
+        ConfigureHostBuilder host,
+        ILoggingBuilder logging,
+        IMetricsBuilder metrics
+    )
     {
-        ArgumentNullException.ThrowIfNull(services,nameof(services));
-        ArgumentNullException.ThrowIfNull(environment,nameof(environment));
-        ArgumentNullException.ThrowIfNull(configuration,nameof(configuration));
-        ArgumentNullException.ThrowIfNull(logging,nameof(logging));
-        ArgumentNullException.ThrowIfNull(metrics, nameof(metrics));
+        ArgumentNullException.ThrowIfNull(services);
+        ArgumentNullException.ThrowIfNull(environment);
+        ArgumentNullException.ThrowIfNull(configuration);
+        ArgumentNullException.ThrowIfNull(logging);
+        ArgumentNullException.ThrowIfNull(metrics);
         Services = services;
         Environment = environment;
         Configuration = configuration;
         Logging = logging;
         Metrics = metrics;
         Items = new Dictionary<string, object?>();
+        Host = host;
     }
 }

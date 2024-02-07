@@ -16,7 +16,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\..\..\..\Common\Elima.Common.EntityFramework\Elima.Common.EntityFramework.csproj" />
-		<ProjectReference Include="..\..\..\..\..\Common\Elima.Common.Modularity\Elima.Common.Modularity.csproj" />
+		<ProjectReference Include="..\..\..\..\..\Common\Elima.Common.Modularity.Autofac\Elima.Common.Modularity.Autofac.csproj" />
 		<ProjectReference Include="..\..\Core\Elima.Template.FirstModule.Domain\Elima.Template.FirstModule.Domain.csproj" />
 	</ItemGroup>
 

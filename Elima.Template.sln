@@ -61,6 +61,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elima.Common.Results", "Com
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elima.Common.Security", "Common\Elima.Common.Security\Elima.Common.Security.csproj", "{43A73276-D50A-495D-8C5E-ADF6509B2703}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elima.Common.Modularity.Autofac", "Common\Elima.Common.Modularity.Autofac\Elima.Common.Modularity.Autofac.csproj", "{9C96ABCB-7B41-41F4-8561-E790B03FB63C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -135,6 +137,10 @@ Global
 		{43A73276-D50A-495D-8C5E-ADF6509B2703}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43A73276-D50A-495D-8C5E-ADF6509B2703}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43A73276-D50A-495D-8C5E-ADF6509B2703}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C96ABCB-7B41-41F4-8561-E790B03FB63C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C96ABCB-7B41-41F4-8561-E790B03FB63C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C96ABCB-7B41-41F4-8561-E790B03FB63C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C96ABCB-7B41-41F4-8561-E790B03FB63C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -166,6 +172,7 @@ Global
 		{D491C57A-8548-4821-AF8A-8FDCBF1C7039} = {3E51E77E-8F3D-416A-AB96-D57695A675F7}
 		{917C6D30-7CCE-42AF-A84D-8889E000C70E} = {3E51E77E-8F3D-416A-AB96-D57695A675F7}
 		{43A73276-D50A-495D-8C5E-ADF6509B2703} = {3E51E77E-8F3D-416A-AB96-D57695A675F7}
+		{9C96ABCB-7B41-41F4-8561-E790B03FB63C} = {3E51E77E-8F3D-416A-AB96-D57695A675F7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9DD064A5-DEC9-4366-B9CF-12F4CB89E7B5}

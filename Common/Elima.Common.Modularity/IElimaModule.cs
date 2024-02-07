@@ -1,8 +1,14 @@
-﻿namespace Elima.Common.Modularity;
+﻿using System.Reflection;
+
+namespace Elima.Common.Modularity;
 
 public interface IElimaModule
 {
-    public Task ConfigureServicesAsync(ServiceConfigurationContext context);
+    Assembly ThisAssembly { get; }
 
-    public Task OnApplicationInitializationAsync(ApplicationInitializationContext context);
+    Task ConfigureServicesAsync(ServiceConfigurationContext context);
+    Task BaseConfigureServicesAsync(ServiceConfigurationContext context);
+    Task OnApplicationInitializationAsync(ApplicationInitializationContext context);
+    Task PostConfigureServicesAsync(ServiceConfigurationContext context);
+    Task PreConfigureServicesAsync(ServiceConfigurationContext context);
 }

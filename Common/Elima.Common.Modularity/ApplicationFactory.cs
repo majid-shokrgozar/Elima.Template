@@ -13,7 +13,10 @@ public static class ApplicationFactory
         foreach (var type in types)
         {
             var module = Create(type);
+            await module.PreConfigureServicesAsync(context);
+            await module.BaseConfigureServicesAsync(context);
             await module.ConfigureServicesAsync(context);
+            await module.PostConfigureServicesAsync(context);
         }
         TStartupModule app = Create<TStartupModule>();
        

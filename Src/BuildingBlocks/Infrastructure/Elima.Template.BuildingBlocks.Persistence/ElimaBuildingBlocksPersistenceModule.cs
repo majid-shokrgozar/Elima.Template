@@ -4,36 +4,24 @@ using Elima.Common.EntityFramework.Data;
 using Elima.Common.EntityFramework.EntityFrameworkCore;
 using Elima.Common.EntityFramework.Uow;
 using Elima.Common.Modularity;
+using Elima.Common.Modularity.Autofac;
 using Elima.Template.FirstModule.Persistence;
 using Elima.Template.FirstModule.Persistence.EntityFramework;
 using Microsoft.Extensions.DependencyInjection;
+using Elima.Common.EntityFramework;
 
 namespace Elima.Template.BuildingBlocks.Persistence;
 
 [DependsOn(typeof(ElimaFirstModulePersistenceModule))]
-public class ElimaBuildingBlocksPersistenceModule : ElimaModule
+public class ElimaBuildingBlocksPersistenceModule : ElimaAutofacModule
 {
     public override Task ConfigureServicesAsync(ServiceConfigurationContext context)
     {
-        context.Services.AddScoped<IUnitOfWork>((serviceProvider) =>
-        {
-            var list = new List<IEfCoreDbContext>();
+        context.Services.AddUnitOfWork(typeof(SampleModuleDbContext));
 
-            var sampleModuleDbContext = serviceProvider.GetService<SampleModuleDbContext>();
+        context.Services.AddAuditPropertySetter();
 
-            if (sampleModuleDbContext is not null)
-                list.Add(sampleModuleDbContext);
-
-            return new UnitOfWork(list);
-        });
-
-        context.Services.AddSingleton(typeof(IDataFilter), typeof(DataFilter));
-        //context.Services.AddSingleton(typeof(IDataFilter<ISoftDelete>), typeof(DataFilter<ISoftDelete>));
-        context.Services.AddSingleton(typeof(IDataFilter<>), typeof(DataFilter<>));
-
-        context.Services.AddScoped<IAuditPropertySetter, AuditPropertySetter>();
-
-        context.Services.Configure<DataFilterOptions>(options =>
+        context.Services.AddDataFilter(options =>
         {
             options.DefaultStates[typeof(ISoftDelete)] = new DataFilterState(isEnabled: true);
         });
