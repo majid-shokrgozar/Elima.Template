@@ -7,7 +7,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Elima.Common\Elima.Common.csproj" />
+	  <ProjectReference Include="..\Elima.Common.Domain\Elima.Common.Domain.csproj" />
 	</ItemGroup>
 
 </Project>

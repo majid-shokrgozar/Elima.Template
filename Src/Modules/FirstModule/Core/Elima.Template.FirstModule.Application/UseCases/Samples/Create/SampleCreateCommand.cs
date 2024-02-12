@@ -8,6 +8,6 @@ using System.Threading.Tasks;
 
 namespace Elima.Template.FirstModule.Application.UseCases.Samples;
 
-public record CreateSampleCommand(string Name):ICommand<SampleDto>
+public record SampleCreateCommand(string Name):ICommand<SampleDto>
 {
 }

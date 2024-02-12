@@ -10,19 +10,19 @@ using System.Threading.Tasks;
 
 namespace Elima.Template.FirstModule.Application.UseCases.Samples.Create
 {
-    public class CreateSampleCommandHandler : ICommandHandler<CreateSampleCommand, SampleDto>
+    public class SampleCreateCommandHandler : ICommandHandler<SampleCreateCommand, SampleDto>
     {
         private readonly ISampleRepository _sampleRepository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public CreateSampleCommandHandler(ISampleRepository sampleRepository, IUnitOfWork unitOfWork)
+        public SampleCreateCommandHandler(ISampleRepository sampleRepository, IUnitOfWork unitOfWork)
         {
             _sampleRepository = sampleRepository;
             _unitOfWork = unitOfWork;
         }
 
 
-        public async Task<Result<SampleDto>> Handle(CreateSampleCommand request, CancellationToken cancellationToken)
+        public async Task<Result<SampleDto>> Handle(SampleCreateCommand request, CancellationToken cancellationToken)
         {
             var sample = await _sampleRepository.InsertAsync(new Sample()
             {

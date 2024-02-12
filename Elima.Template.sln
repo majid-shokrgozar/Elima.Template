@@ -67,6 +67,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elima.Common.Application.Me
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elima.Common.Results.FastEndpoints", "Common\Elima.Common.Results.FastEndpoints\Elima.Common.Results.FastEndpoints.csproj", "{36D61831-7A93-4D92-91AB-D1E42A19A3FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elima.Common.Application", "Common\Elima.Common.Application\Elima.Common.Application.csproj", "{7DDA093C-435A-40BE-B1D6-7AF5EA3272C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elima.Common.Presentation", "Common\Elima.Common.Presentation\Elima.Common.Presentation.csproj", "{C249E513-41FD-4A4B-8462-8CD06D57580B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -153,6 +157,14 @@ Global
 		{36D61831-7A93-4D92-91AB-D1E42A19A3FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36D61831-7A93-4D92-91AB-D1E42A19A3FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36D61831-7A93-4D92-91AB-D1E42A19A3FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DDA093C-435A-40BE-B1D6-7AF5EA3272C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DDA093C-435A-40BE-B1D6-7AF5EA3272C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DDA093C-435A-40BE-B1D6-7AF5EA3272C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DDA093C-435A-40BE-B1D6-7AF5EA3272C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C249E513-41FD-4A4B-8462-8CD06D57580B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C249E513-41FD-4A4B-8462-8CD06D57580B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C249E513-41FD-4A4B-8462-8CD06D57580B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C249E513-41FD-4A4B-8462-8CD06D57580B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -187,6 +199,8 @@ Global
 		{9C96ABCB-7B41-41F4-8561-E790B03FB63C} = {3E51E77E-8F3D-416A-AB96-D57695A675F7}
 		{51A1B817-36BB-45E6-BFCC-AF958B52FED1} = {3E51E77E-8F3D-416A-AB96-D57695A675F7}
 		{36D61831-7A93-4D92-91AB-D1E42A19A3FF} = {3E51E77E-8F3D-416A-AB96-D57695A675F7}
+		{7DDA093C-435A-40BE-B1D6-7AF5EA3272C3} = {3E51E77E-8F3D-416A-AB96-D57695A675F7}
+		{C249E513-41FD-4A4B-8462-8CD06D57580B} = {3E51E77E-8F3D-416A-AB96-D57695A675F7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9DD064A5-DEC9-4366-B9CF-12F4CB89E7B5}

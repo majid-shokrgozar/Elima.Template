@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using ProblemDetails = Elima.Common.ExceptionHandling.ProblemDetails;
 namespace FastEndpoints;
 
-public abstract class EndpointElimaResultWithMapping<TRequest, TResponse, TCommand, TResultValue> : Endpoint<TRequest, TResponse>
+public abstract class EndpointElimaResultWithMapping<TRequest, TResponse, TCommandOrQuery, TResultValue> : Endpoint<TRequest, TResponse>
     where TRequest : notnull
 {
     public Task SendAsync(Result<TResultValue> result, Func<TResultValue, TResponse>? mapper, CancellationToken cancellationToken)
@@ -140,16 +140,16 @@ public abstract class EndpointElimaResultWithMapping<TRequest, TResponse, TComma
     /// override this method and place the logic for mapping the request dto to the desired domain entity
     /// </summary>
     /// <param name="r">the request dto</param>
-    public virtual TCommand MapToCommand(TRequest r)
-        => throw new NotImplementedException($"Please override the {nameof(MapToCommand)} method!");
+    public virtual TCommandOrQuery MapToCommandOrQuery(TRequest r)
+        => throw new NotImplementedException($"Please override the {nameof(MapToCommandOrQuery)} method!");
 
     /// <summary>
     /// override this method and place the logic for mapping the request dto to the desired domain entity
     /// </summary>
     /// <param name="r">the request dto to map from</param>
     /// <param name="ct">a cancellation token</param>
-    public virtual Task<TCommand> MapToCommandAsync(TRequest r, CancellationToken ct = default)
-        => throw new NotImplementedException($"Please override the {nameof(MapToCommandAsync)} method!");
+    public virtual Task<TCommandOrQuery> MapToCommandOrQueryAsync(TRequest r, CancellationToken ct = default)
+        => throw new NotImplementedException($"Please override the {nameof(MapToCommandOrQueryAsync)} method!");
 
     /// <summary>
     /// override this method and place the logic for mapping a domain entity to a response dto

@@ -1,5 +1,5 @@
 ﻿namespace Elima.Template.FirstModule.Presention.Samples.Create;
 
-public record CreateSampleResponse(string Name)
+public record SampleCreateResponse(string Name)
 {
 }

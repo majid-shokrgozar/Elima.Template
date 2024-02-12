@@ -11,6 +11,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\Elima.Common.Application\Elima.Common.Application.csproj" />
 		<ProjectReference Include="..\Elima.Common.Result\Elima.Common.Results.csproj" />
 	</ItemGroup>
 </Project>
