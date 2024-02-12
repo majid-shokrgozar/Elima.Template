@@ -61,7 +61,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elima.Common.Results", "Com
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elima.Common.Security", "Common\Elima.Common.Security\Elima.Common.Security.csproj", "{43A73276-D50A-495D-8C5E-ADF6509B2703}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elima.Common.Modularity.Autofac", "Common\Elima.Common.Modularity.Autofac\Elima.Common.Modularity.Autofac.csproj", "{9C96ABCB-7B41-41F4-8561-E790B03FB63C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elima.Common.Modularity.Autofac", "Common\Elima.Common.Modularity.Autofac\Elima.Common.Modularity.Autofac.csproj", "{9C96ABCB-7B41-41F4-8561-E790B03FB63C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elima.Common.Application.MediatR", "Common\Elima.Common.Application.MediatR\Elima.Common.Application.MediatR.csproj", "{51A1B817-36BB-45E6-BFCC-AF958B52FED1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elima.Common.Results.FastEndpoints", "Common\Elima.Common.Results.FastEndpoints\Elima.Common.Results.FastEndpoints.csproj", "{36D61831-7A93-4D92-91AB-D1E42A19A3FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -141,6 +145,14 @@ Global
 		{9C96ABCB-7B41-41F4-8561-E790B03FB63C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C96ABCB-7B41-41F4-8561-E790B03FB63C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C96ABCB-7B41-41F4-8561-E790B03FB63C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51A1B817-36BB-45E6-BFCC-AF958B52FED1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51A1B817-36BB-45E6-BFCC-AF958B52FED1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51A1B817-36BB-45E6-BFCC-AF958B52FED1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51A1B817-36BB-45E6-BFCC-AF958B52FED1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36D61831-7A93-4D92-91AB-D1E42A19A3FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36D61831-7A93-4D92-91AB-D1E42A19A3FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36D61831-7A93-4D92-91AB-D1E42A19A3FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36D61831-7A93-4D92-91AB-D1E42A19A3FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -173,6 +185,8 @@ Global
 		{917C6D30-7CCE-42AF-A84D-8889E000C70E} = {3E51E77E-8F3D-416A-AB96-D57695A675F7}
 		{43A73276-D50A-495D-8C5E-ADF6509B2703} = {3E51E77E-8F3D-416A-AB96-D57695A675F7}
 		{9C96ABCB-7B41-41F4-8561-E790B03FB63C} = {3E51E77E-8F3D-416A-AB96-D57695A675F7}
+		{51A1B817-36BB-45E6-BFCC-AF958B52FED1} = {3E51E77E-8F3D-416A-AB96-D57695A675F7}
+		{36D61831-7A93-4D92-91AB-D1E42A19A3FF} = {3E51E77E-8F3D-416A-AB96-D57695A675F7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9DD064A5-DEC9-4366-B9CF-12F4CB89E7B5}

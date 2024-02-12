@@ -11,6 +11,11 @@ public class ValidationErrorInfo
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string[] Members { get; set; } = default!;
 
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? Code { get; set; }
+
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public object? AttemptedValue { get; set; }
 
     public ValidationErrorInfo()
     {

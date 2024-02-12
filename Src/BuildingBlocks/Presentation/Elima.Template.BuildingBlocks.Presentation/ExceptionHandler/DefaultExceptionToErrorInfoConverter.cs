@@ -143,22 +143,24 @@ public class DefaultExceptionToErrorInfoConverter : IExceptionToErrorInfoConvert
 
     protected virtual ProblemDetails CreateDetailedErrorInfoFromException(Exception exception, bool sendStackTraceToClients)
     {
-        var detailBuilder = new StringBuilder();
+        var problems = new List<ProblemDetail>();
 
-        AddExceptionToDetails(exception, detailBuilder, sendStackTraceToClients);
+        AddExceptionToDetails(exception,ref problems, sendStackTraceToClients);
 
-        var problemDetails = new ProblemDetails()
+        var problemDetails = new ProblemDetails
         {
-            Title= "Validation Error"
+            Details = problems
         };
-
-        problemDetails.Details = [
-            new(exception.Message,details:detailBuilder.ToString(),data:exception.Data)
-        ];
 
         if (exception is ValidationException)
         {
+            problemDetails.Title = "Validation Error";
             problemDetails.ValidationErrors = GetValidationErrorInfos((exception as ValidationException)!);
+        }
+
+        if (string.IsNullOrEmpty(problemDetails.Title))
+        {
+            problemDetails.Title = problems.Count == 1 ? problems[0].Message : "InternalServerErrorMessage";
         }
 
         return problemDetails;
@@ -201,9 +203,15 @@ public class DefaultExceptionToErrorInfoConverter : IExceptionToErrorInfoConvert
         return validationErrorInfos;
     }
 
-    protected virtual void AddExceptionToDetails(Exception exception, StringBuilder detailBuilder, bool sendStackTraceToClients)
+    protected virtual void AddExceptionToDetails(Exception exception, ref List<ProblemDetail> problems, bool sendStackTraceToClients)
     {
+        var problemDetail = new ProblemDetail();
+        var detailBuilder = new StringBuilder();
         //Exception Message
+
+        problemDetail.Message = exception.Message;
+
+
         detailBuilder.AppendLine(exception.GetType().Name + ": " + exception.Message);
 
         //Additional info for UserFriendlyException
@@ -214,28 +222,30 @@ public class DefaultExceptionToErrorInfoConverter : IExceptionToErrorInfoConvert
             if (!string.IsNullOrEmpty(details))
             {
                 detailBuilder.AppendLine(details);
+
             }
         }
 
         //Additional info for AbpValidationException
-        if (exception is ValidationException validationException)
+        if (exception is ValidationException validationException && validationException.ValidationErrors.Count > 0)
         {
-            if (validationException.ValidationErrors.Count > 0)
-            {
-                detailBuilder.AppendLine(GetValidationErrorNarrative(validationException));
-            }
+            detailBuilder.AppendLine(GetValidationErrorNarrative(validationException));
         }
+
+        problemDetail.Details = detailBuilder.ToString();
 
         //Exception StackTrace
         if (sendStackTraceToClients && !string.IsNullOrEmpty(exception.StackTrace))
         {
-            detailBuilder.AppendLine("STACK TRACE: " + exception.StackTrace);
+            problemDetail.StackTrace = exception.StackTrace;
         }
+
+        problems.Add(problemDetail);
 
         //Inner exception
         if (exception.InnerException != null)
         {
-            AddExceptionToDetails(exception.InnerException, detailBuilder, sendStackTraceToClients);
+            AddExceptionToDetails(exception.InnerException,ref problems, sendStackTraceToClients);
         }
 
         //Inner exceptions for AggregateException
@@ -248,7 +258,7 @@ public class DefaultExceptionToErrorInfoConverter : IExceptionToErrorInfoConvert
 
             foreach (var innerException in aggException.InnerExceptions)
             {
-                AddExceptionToDetails(innerException, detailBuilder, sendStackTraceToClients);
+                AddExceptionToDetails(innerException,ref problems, sendStackTraceToClients);
             }
         }
     }
