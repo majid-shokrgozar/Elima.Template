@@ -35,14 +35,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{21EF0E26-5F57-44E7-96C2-6DA0CD361C42}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigiPay.Template.FirstModule.Domain", "Src\Modules\FirstModule\Core\DigiPay.Template.FirstModule.Domain\DigiPay.Template.FirstModule.Domain.csproj", "{95FFDE69-E6BA-4AF0-83A7-50DF7E6B2C25}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigiPay.Template.FirstModule.Infrastructure", "Src\Modules\FirstModule\Infrastructure\DigiPay.Template.FirstModule.Infrastructure\DigiPay.Template.FirstModule.Infrastructure.csproj", "{9D545FCE-66C5-4760-B5BC-5A464090EF8E}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigiPay.Template.FirstModule.Persistence", "Src\Modules\FirstModule\Infrastructure\DigiPay.Template.FirstModule.Persistence\DigiPay.Template.FirstModule.Persistence.csproj", "{D050E533-09A0-4255-85D8-F924CA8D8E73}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigiPay.Template.FirstModule.Presention", "Src\Modules\FirstModule\Presentation\DigiPay.Template.FirstModule.Presention\DigiPay.Template.FirstModule.Presention.csproj", "{BC16C20A-09EF-46A5-AB38-1218260931CF}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{6BD20EEE-3EDC-4D80-B8BE-D4084ED7F2BB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{3E51E77E-8F3D-416A-AB96-D57695A675F7}"
@@ -63,13 +55,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elima.Common.Modularity.Aut
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elima.Common.Application.MediatR", "Common\Elima.Common.Application.MediatR\Elima.Common.Application.MediatR.csproj", "{51A1B817-36BB-45E6-BFCC-AF958B52FED1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elima.Common.Results.FastEndpoints", "Common\Elima.Common.Results.FastEndpoints\Elima.Common.Results.FastEndpoints.csproj", "{36D61831-7A93-4D92-91AB-D1E42A19A3FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elima.Common.Results.FastEndpoints", "Common\Elima.Common.Results.FastEndpoints\Elima.Common.Results.FastEndpoints.csproj", "{36D61831-7A93-4D92-91AB-D1E42A19A3FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elima.Common.Application", "Common\Elima.Common.Application\Elima.Common.Application.csproj", "{7DDA093C-435A-40BE-B1D6-7AF5EA3272C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elima.Common.Application", "Common\Elima.Common.Application\Elima.Common.Application.csproj", "{7DDA093C-435A-40BE-B1D6-7AF5EA3272C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elima.Common.Presentation", "Common\Elima.Common.Presentation\Elima.Common.Presentation.csproj", "{C249E513-41FD-4A4B-8462-8CD06D57580B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elima.Common.Presentation", "Common\Elima.Common.Presentation\Elima.Common.Presentation.csproj", "{C249E513-41FD-4A4B-8462-8CD06D57580B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigiPay.Template.CoreModule.Application", "Src\Modules\FirstModule\Core\DigiPay.Template.CoreModule.Application\DigiPay.Template.CoreModule.Application.csproj", "{B861488B-B618-4A57-8E9C-C436111CB61E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigiPay.Template.CoreModule.Application", "Src\Modules\CoreModule\Core\DigiPay.Template.CoreModule.Application\DigiPay.Template.CoreModule.Application.csproj", "{443DB57A-0EA9-4642-8139-FED4BBBC3335}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigiPay.Template.CoreModule.Domain", "Src\Modules\CoreModule\Core\DigiPay.Template.CoreModule.Domain\DigiPay.Template.CoreModule.Domain.csproj", "{6F8A44D4-7B6C-4E80-8CAB-91065C0B3D08}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigiPay.Template.CoreModule.Infrastructure", "Src\Modules\CoreModule\Infrastructure\DigiPay.Template.CoreModule.Infrastructure\DigiPay.Template.CoreModule.Infrastructure.csproj", "{2B427324-9C4E-4BA3-836B-E9BB92162C60}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigiPay.Template.CoreModule.Persistence", "Src\Modules\CoreModule\Infrastructure\DigiPay.Template.CoreModule.Persistence\DigiPay.Template.CoreModule.Persistence.csproj", "{4D015E85-944D-458F-95FA-6B63D33C9C2C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigiPay.Template.CoreModule.Presention", "Src\Modules\CoreModule\Presentation\DigiPay.Template.CoreModule.Presention\DigiPay.Template.CoreModule.Presention.csproj", "{B99D4452-DBF1-476C-AB97-12D7E5286A34}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -101,22 +101,6 @@ Global
 		{52E8311E-5A72-4C5A-AAC1-C71B543489A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52E8311E-5A72-4C5A-AAC1-C71B543489A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52E8311E-5A72-4C5A-AAC1-C71B543489A1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{95FFDE69-E6BA-4AF0-83A7-50DF7E6B2C25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{95FFDE69-E6BA-4AF0-83A7-50DF7E6B2C25}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{95FFDE69-E6BA-4AF0-83A7-50DF7E6B2C25}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{95FFDE69-E6BA-4AF0-83A7-50DF7E6B2C25}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9D545FCE-66C5-4760-B5BC-5A464090EF8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9D545FCE-66C5-4760-B5BC-5A464090EF8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9D545FCE-66C5-4760-B5BC-5A464090EF8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9D545FCE-66C5-4760-B5BC-5A464090EF8E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D050E533-09A0-4255-85D8-F924CA8D8E73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D050E533-09A0-4255-85D8-F924CA8D8E73}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D050E533-09A0-4255-85D8-F924CA8D8E73}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D050E533-09A0-4255-85D8-F924CA8D8E73}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BC16C20A-09EF-46A5-AB38-1218260931CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BC16C20A-09EF-46A5-AB38-1218260931CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BC16C20A-09EF-46A5-AB38-1218260931CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BC16C20A-09EF-46A5-AB38-1218260931CF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E8B601E1-6F5A-4CDB-8915-C4C101163C7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E8B601E1-6F5A-4CDB-8915-C4C101163C7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8B601E1-6F5A-4CDB-8915-C4C101163C7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -161,10 +145,26 @@ Global
 		{C249E513-41FD-4A4B-8462-8CD06D57580B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C249E513-41FD-4A4B-8462-8CD06D57580B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C249E513-41FD-4A4B-8462-8CD06D57580B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B861488B-B618-4A57-8E9C-C436111CB61E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B861488B-B618-4A57-8E9C-C436111CB61E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B861488B-B618-4A57-8E9C-C436111CB61E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B861488B-B618-4A57-8E9C-C436111CB61E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{443DB57A-0EA9-4642-8139-FED4BBBC3335}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{443DB57A-0EA9-4642-8139-FED4BBBC3335}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{443DB57A-0EA9-4642-8139-FED4BBBC3335}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{443DB57A-0EA9-4642-8139-FED4BBBC3335}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F8A44D4-7B6C-4E80-8CAB-91065C0B3D08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F8A44D4-7B6C-4E80-8CAB-91065C0B3D08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F8A44D4-7B6C-4E80-8CAB-91065C0B3D08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F8A44D4-7B6C-4E80-8CAB-91065C0B3D08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B427324-9C4E-4BA3-836B-E9BB92162C60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B427324-9C4E-4BA3-836B-E9BB92162C60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B427324-9C4E-4BA3-836B-E9BB92162C60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B427324-9C4E-4BA3-836B-E9BB92162C60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D015E85-944D-458F-95FA-6B63D33C9C2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D015E85-944D-458F-95FA-6B63D33C9C2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D015E85-944D-458F-95FA-6B63D33C9C2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D015E85-944D-458F-95FA-6B63D33C9C2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B99D4452-DBF1-476C-AB97-12D7E5286A34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B99D4452-DBF1-476C-AB97-12D7E5286A34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B99D4452-DBF1-476C-AB97-12D7E5286A34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B99D4452-DBF1-476C-AB97-12D7E5286A34}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -185,10 +185,6 @@ Global
 		{29E5A658-5B15-421B-8205-72A4CD92F47A} = {5456698D-C752-4E32-A303-EBFA6932B41D}
 		{903992CB-A193-4019-9C84-1B012E18970A} = {5456698D-C752-4E32-A303-EBFA6932B41D}
 		{21EF0E26-5F57-44E7-96C2-6DA0CD361C42} = {5456698D-C752-4E32-A303-EBFA6932B41D}
-		{95FFDE69-E6BA-4AF0-83A7-50DF7E6B2C25} = {29E5A658-5B15-421B-8205-72A4CD92F47A}
-		{9D545FCE-66C5-4760-B5BC-5A464090EF8E} = {903992CB-A193-4019-9C84-1B012E18970A}
-		{D050E533-09A0-4255-85D8-F924CA8D8E73} = {903992CB-A193-4019-9C84-1B012E18970A}
-		{BC16C20A-09EF-46A5-AB38-1218260931CF} = {21EF0E26-5F57-44E7-96C2-6DA0CD361C42}
 		{E8B601E1-6F5A-4CDB-8915-C4C101163C7D} = {3E51E77E-8F3D-416A-AB96-D57695A675F7}
 		{BABCC7BB-BD65-4F27-8A84-F8421F972B88} = {3E51E77E-8F3D-416A-AB96-D57695A675F7}
 		{9B8F10F9-D846-4FBF-9F90-46758AA57615} = {3E51E77E-8F3D-416A-AB96-D57695A675F7}
@@ -200,7 +196,11 @@ Global
 		{36D61831-7A93-4D92-91AB-D1E42A19A3FF} = {3E51E77E-8F3D-416A-AB96-D57695A675F7}
 		{7DDA093C-435A-40BE-B1D6-7AF5EA3272C3} = {3E51E77E-8F3D-416A-AB96-D57695A675F7}
 		{C249E513-41FD-4A4B-8462-8CD06D57580B} = {3E51E77E-8F3D-416A-AB96-D57695A675F7}
-		{B861488B-B618-4A57-8E9C-C436111CB61E} = {29E5A658-5B15-421B-8205-72A4CD92F47A}
+		{443DB57A-0EA9-4642-8139-FED4BBBC3335} = {29E5A658-5B15-421B-8205-72A4CD92F47A}
+		{6F8A44D4-7B6C-4E80-8CAB-91065C0B3D08} = {29E5A658-5B15-421B-8205-72A4CD92F47A}
+		{2B427324-9C4E-4BA3-836B-E9BB92162C60} = {903992CB-A193-4019-9C84-1B012E18970A}
+		{4D015E85-944D-458F-95FA-6B63D33C9C2C} = {903992CB-A193-4019-9C84-1B012E18970A}
+		{B99D4452-DBF1-476C-AB97-12D7E5286A34} = {21EF0E26-5F57-44E7-96C2-6DA0CD361C42}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9DD064A5-DEC9-4366-B9CF-12F4CB89E7B5}
