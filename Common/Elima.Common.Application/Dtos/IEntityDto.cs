@@ -1,4 +1,4 @@
-﻿namespace Elima.Common.Application.Dtos;
+﻿namespace Elima.Common.Application;
 
 public interface IEntityDto
 {

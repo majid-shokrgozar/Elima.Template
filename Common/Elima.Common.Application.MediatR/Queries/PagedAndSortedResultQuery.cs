@@ -1,9 +1,8 @@
-﻿using Elima.Common.Application.Dtos;
-using System;
+﻿using System;
 
 namespace Elima.Common.Application.MediatR.Queries;
 
 [Serializable]
-public class PagedAndSortedResultQuery<TResponse> : PagedAndSortedResultRequestDto, IPagedQuery<TResponse>, IPagedAndSortedResultQuery<TResponse>
+public class PagedAndSortedResultQuery<TResponse> : BasePagedAndSortedResultRequestDto, IPagedQuery<TResponse>, IPagedAndSortedResultQuery<TResponse>
 {
 }

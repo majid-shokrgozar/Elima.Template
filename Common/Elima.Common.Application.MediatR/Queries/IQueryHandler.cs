@@ -16,7 +16,7 @@ public interface IListQueryHandler<TQuery, TResponse>
 }
 
 public interface IPagedQueryHandler<TQuery, TResponse>
-    : IRequestHandler<TQuery, PagedResultDto<TResponse>>
+    : IRequestHandler<TQuery, PagedResult<TResponse>>
     where TQuery : IPagedQuery<TResponse>
 {
 }

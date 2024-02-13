@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Elima.Common.Application.Dtos;
+namespace Elima.Common.Application;
 
 [Serializable]
 public abstract class EntityDto : IEntityDto //TODO: Consider to delete this class

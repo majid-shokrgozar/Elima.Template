@@ -1,7 +1,7 @@
 ﻿using Elima.Common.Domain.Entities.Auditing.Contracts;
 using System;
 
-namespace Elima.Common.Application.Dtos;
+namespace Elima.Common.Application;
 
 /// <summary>
 /// This class can be inherited by DTO classes to implement <see cref="IFullAuditedObject"/> interface.

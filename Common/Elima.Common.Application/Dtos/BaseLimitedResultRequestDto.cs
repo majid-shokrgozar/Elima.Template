@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Elima.Common.Application.Dtos;
+namespace Elima.Common.Application;
+
+
 
 /// <summary>
 /// Simply implements <see cref="ILimitedResultRequest"/>.
 /// </summary>
 [Serializable]
-public class LimitedResultRequestDto : ILimitedResultRequest
+public class BaseLimitedResultRequestDto : ILimitedResultRequest
 {
     /// <summary>
     /// Default value: 10.

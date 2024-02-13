@@ -1,9 +1,9 @@
-﻿using Elima.Common.Application.Dtos;
-using System;
+﻿using System;
 
 namespace Elima.Common.Application.MediatR.Queries;
 
 [Serializable]
-public class LimitedResultQuery<TResponse> : LimitedResultRequestDto, IListQuery<TResponse>, ILimitedResultQuery<TResponse>
+public class LimitedResultQuery<TResponse> : BaseLimitedResultRequestDto, IListQuery<TResponse>, ILimitedResultQuery<TResponse>
 {
 }
+

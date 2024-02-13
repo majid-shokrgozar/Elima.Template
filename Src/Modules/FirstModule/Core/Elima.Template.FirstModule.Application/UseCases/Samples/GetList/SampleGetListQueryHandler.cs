@@ -18,10 +18,7 @@ namespace Elima.Template.FirstModule.Application.UseCases.Samples.GetList
             this._sampleRepository = sampleRepository;
         }
 
-
-
-
-        public async Task<PagedResultDto<SampleDto>> Handle(SampleGetListQuery request, CancellationToken cancellationToken)
+        public async Task<PagedResult<SampleDto>> Handle(SampleGetListQuery request, CancellationToken cancellationToken)
         {
             var list = await _sampleRepository.GetPagedListAsync(request.SkipCount, request.MaxResultCount, "");
             var count = await _sampleRepository.GetCountAsync();

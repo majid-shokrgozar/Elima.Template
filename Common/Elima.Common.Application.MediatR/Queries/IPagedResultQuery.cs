@@ -3,6 +3,6 @@ using MediatR;
 
 namespace Elima.Common.Application.MediatR.Queries;
 
-public interface ILimitedResultQuery<TResponse> : IRequest<Result<TResponse>>, ILimitedResultRequest
+public interface IPagedResultQuery<TResponse> : IRequest<Result<TResponse>>, IPagedResultRequest
 {
 }

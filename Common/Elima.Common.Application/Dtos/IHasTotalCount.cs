@@ -1,4 +1,4 @@
-﻿namespace Elima.Common.Application.Dtos;
+﻿namespace Elima.Common.Application;
 
 /// <summary>
 /// This interface is defined to standardize to set "Total Count of Items" to a DTO.

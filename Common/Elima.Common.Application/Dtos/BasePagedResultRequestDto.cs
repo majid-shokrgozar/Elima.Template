@@ -1,13 +1,13 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Elima.Common.Application.Dtos;
+namespace Elima.Common.Application;
 
 /// <summary>
 /// Simply implements <see cref="IPagedResultRequest"/>.
 /// </summary>
 [Serializable]
-public class PagedResultRequestDto : LimitedResultRequestDto, IPagedResultRequest
+public class BasePagedResultRequestDto : BaseLimitedResultRequestDto, IPagedResultRequest
 {
     [Range(0, int.MaxValue)]
     public virtual int SkipCount { get; set; }
