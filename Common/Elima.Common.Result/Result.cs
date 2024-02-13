@@ -6,8 +6,8 @@ namespace Elima.Common.Results;
 
 public class Result : IResult
 {
-    private List<ValidationError>? _validationErrors = [];
-    private List<Error>? _errors = [];
+    private readonly List<ValidationError>? _validationErrors;
+    private readonly List<Error>? _errors;
     protected internal Result(ResultStatus status, List<Error>? errors, List<ValidationError>? validationErrors)
     {
         Status = status;

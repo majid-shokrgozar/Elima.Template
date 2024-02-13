@@ -23,16 +23,6 @@ public class SampleCreateEndpoint : EndpointElimaResultWithMapping<SampleCreateR
     public override async Task HandleAsync(SampleCreateRequest req, CancellationToken ct)
     {
         var result = await _sender.Send(MapToCommandOrQuery(req), ct);
-
-        if (ValidationFailed)
-        {
-            foreach (ValidationFailure failure in ValidationFailures)
-            {
-                var propertyName = failure.PropertyName;
-                var errorMessage = failure.ErrorMessage;
-            }
-            await SendErrorsAsync(400, ct);
-        }
         await SendAsync(result, ct);
     }
 
