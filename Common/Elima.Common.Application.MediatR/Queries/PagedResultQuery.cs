@@ -6,6 +6,6 @@ using System.Collections.Generic;
 namespace Elima.Common.Application.MediatR.Queries;
 
 [Serializable]
-public class PagedResultQuery<TResponse> : PagedResultRequestDto, IPagedQuery<TResponse>, IPagedResulQuery<TResponse>
+public class PagedResultQuery<TResponse> : PagedResultRequestDto, IPagedQuery<TResponse>
 {
 }

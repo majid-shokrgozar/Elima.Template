@@ -25,8 +25,8 @@ namespace Elima.Template.WebApi
         {
             context.Services.AddControllers();
 
-            context.Services.AddEndpointsApiExplorer();
-            context.Services.AddSwaggerGen();
+            //context.Services.AddEndpointsApiExplorer();
+            //context.Services.AddSwaggerGen();
 
             context.Services.AddHttpContextAccessor();
 
@@ -36,7 +36,7 @@ namespace Elima.Template.WebApi
             });
 
             context.Services
-                .AddFastEndpoints()
+                .AddFastEndpoints(options => options.DisableAutoDiscovery = false)
                 .SwaggerDocument();
 
             context.Services.Configure<ExceptionHandlingOptions>(option =>
@@ -53,11 +53,11 @@ namespace Elima.Template.WebApi
             var app = context.ApplicationBuilder;
 
             // Configure the HTTP request pipeline.
-            if (context.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
+            //if (context.Environment.IsDevelopment())
+            //{
+            //    app.UseSwagger();
+            //    app.UseSwaggerUI();
+            //}
 
             app.UseHttpsRedirection();
 

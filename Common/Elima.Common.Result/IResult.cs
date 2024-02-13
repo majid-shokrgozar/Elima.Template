@@ -18,3 +18,9 @@ public interface IResultWithValue : IResult
 {
     object? GetValue();
 }
+
+
+public interface IResultWithValue<out TValue> : IResultWithValue
+{
+    public TValue Value { get; }
+}

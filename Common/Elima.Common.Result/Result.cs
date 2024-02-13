@@ -35,7 +35,7 @@ public class Result : IResult
     public static Result Conflict(Error? error = null) => new(ResultStatus.Conflict, [error ?? Error.Conflict], null);
 }
 
-public class Result<TValue> : Result, IResultWithValue
+public class Result<TValue> : Result, IResultWithValue<TValue>
 {
     private readonly TValue? _value;
 
@@ -75,19 +75,4 @@ public class Result<TValue> : Result, IResultWithValue
 
     public static implicit operator Result<TValue>(TValue? value) => Result<TValue>.Success(value);
 
-}
-
-
-public class ListResult<TValue> : Result<ListResultDto<TValue>>, IResultWithValue
-{
-    protected internal ListResult(ListResultDto<TValue>? value, ResultStatus isSuccess, List<Error>? errors, List<ValidationError>? validationErrors) : base(value, isSuccess, errors, validationErrors)
-    {
-    }
-}
-
-public class PagedResult<TValue> : Result<PagedResultDto<TValue>>, IResultWithValue
-{
-    protected internal PagedResult(PagedResultDto<TValue>? value, ResultStatus isSuccess, List<Error>? errors, List<ValidationError>? validationErrors) : base(value, isSuccess, errors, validationErrors)
-    {
-    }
 }

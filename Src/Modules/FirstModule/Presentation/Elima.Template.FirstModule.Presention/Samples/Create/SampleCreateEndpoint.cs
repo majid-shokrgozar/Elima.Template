@@ -36,7 +36,7 @@ public class SampleCreateEndpoint : EndpointElimaResultWithMapping<SampleCreateR
         await SendAsync(result, ct);
     }
 
-    public override Task<SampleCreateResponse> MapFromResultValueAsync(SampleDto e, CancellationToken ct = default)
+    public override Task<SampleCreateResponse> MapToResponseAsync(SampleDto e, CancellationToken ct = default)
     {
         return Task.FromResult(new SampleCreateResponse(e.Name)); 
     }

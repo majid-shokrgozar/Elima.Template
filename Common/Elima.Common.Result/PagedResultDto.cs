@@ -12,7 +12,7 @@ namespace Elima.Common.Results;
 public class PagedResultDto<T> : ListResultDto<T>, IPagedResult<T>
 {
     /// <inheritdoc />
-    public long TotalCount { get; set; } //TODO: Can be a long value..?
+    public long TotalCount { get; set; } 
 
     /// <summary>
     /// Creates a new <see cref="PagedResultDto{T}"/> object.
