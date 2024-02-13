@@ -1,4 +1,4 @@
-namespace Elima.Common.ExceptionHandling;
+﻿namespace Elima.Common.ExceptionHandling;
 
 public interface IHasErrorDetails
 {

@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Common\Elima.Common.Modularity.Autofac\Elima.Common.Modularity.Autofac.csproj" />
+    <ProjectReference Include="..\..\..\Modules\FirstModule\Core\DigiPay.Template.CoreModule.Application\DigiPay.Template.CoreModule.Application.csproj" />
+  </ItemGroup>
+
+</Project>

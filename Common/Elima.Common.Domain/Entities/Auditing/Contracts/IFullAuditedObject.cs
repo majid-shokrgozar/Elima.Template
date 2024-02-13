@@ -1,4 +1,4 @@
-namespace Elima.Common.Domain.Entities.Auditing.Contracts;
+﻿namespace Elima.Common.Domain.Entities.Auditing.Contracts;
 
 /// <summary>
 /// This interface adds <see cref="IDeletionAuditedObject"/> to <see cref="IAuditedObject"/>.

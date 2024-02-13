@@ -1,4 +1,4 @@
-using Elima.Common.Domain.Entities.Auditing.Contracts;
+﻿using Elima.Common.Domain.Entities.Auditing.Contracts;
 using System;
 
 namespace Elima.Common.Domain.Entities.Auditing;
@@ -21,6 +21,7 @@ public abstract class CreationAuditedEntityWithUser<TUser> : CreationAuditedEnti
 /// <typeparam name="TUser">Type of the user</typeparam>
 [Serializable]
 public abstract class CreationAuditedEntityWithUser<TKey, TUser> : CreationAuditedEntity<TKey>, ICreationAuditedObject<TUser>
+     where TKey : notnull
 {
     /// <inheritdoc />
     public virtual TUser? Creator { get; protected set; }

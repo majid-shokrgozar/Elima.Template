@@ -1,4 +1,4 @@
-using Elima.Common.Domain.Entities.Auditing.Contracts;
+﻿using Elima.Common.Domain.Entities.Auditing.Contracts;
 using System;
 
 namespace Elima.Common.Domain.Entities.Auditing;

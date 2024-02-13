@@ -1,4 +1,4 @@
-using Elima.Common.Domain.Entities.Auditing.Contracts;
+﻿using Elima.Common.Domain.Entities.Auditing.Contracts;
 using System;
 
 namespace Elima.Common.Domain.Entities.Auditing;
@@ -22,6 +22,7 @@ public abstract class AuditedEntity : CreationAuditedEntity, IAuditedObject
 /// <typeparam name="TKey">Type of the primary key of the entity</typeparam>
 [Serializable]
 public abstract class AuditedEntity<TKey> : CreationAuditedEntity<TKey>, IAuditedObject
+    where TKey : notnull
 {
     /// <inheritdoc />
     public virtual DateTime? LastModificationTime { get; set; }

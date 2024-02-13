@@ -4,5 +4,5 @@
 dotnet_diagnostic.IDE0005.severity = none
 [*]
 vsspell_section_id = 8aa12a16901546719bd8a908b8c4bd73
-vsspell_ignored_words_8aa12a16901546719bd8a908b8c4bd73 = Elima|Dto|Api
+vsspell_ignored_words_8aa12a16901546719bd8a908b8c4bd73 = Api|Dto|Elima|Digi
 

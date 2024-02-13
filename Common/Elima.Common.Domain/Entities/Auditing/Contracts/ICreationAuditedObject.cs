@@ -1,4 +1,4 @@
-namespace Elima.Common.Domain.Entities.Auditing.Contracts;
+﻿namespace Elima.Common.Domain.Entities.Auditing.Contracts;
 
 /// <summary>
 /// This interface can be implemented to store creation information (who and when created).

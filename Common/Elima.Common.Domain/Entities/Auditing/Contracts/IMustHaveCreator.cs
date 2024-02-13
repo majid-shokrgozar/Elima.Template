@@ -1,4 +1,4 @@
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
 using System;
 
 namespace Elima.Common.Domain.Entities.Auditing.Contracts;

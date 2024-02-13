@@ -1,4 +1,4 @@
-namespace Elima.Common.Domain.Entities.Events;
+﻿namespace Elima.Common.Domain.Entities.Events;
 
 /// <summary>
 /// Used to trigger entity change events.

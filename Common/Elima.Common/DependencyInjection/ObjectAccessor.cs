@@ -1,4 +1,4 @@
-namespace Elima.Common.DependencyInjection;
+﻿namespace Elima.Common.DependencyInjection;
 
 public class ObjectAccessor<T> : IObjectAccessor<T>
 {

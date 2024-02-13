@@ -1,4 +1,4 @@
-namespace Elima.Common.Domain.Entities.Events;
+﻿namespace Elima.Common.Domain.Entities.Events;
 
 /// <summary>
 /// Null-object implementation of <see cref="IEntityChangeEventHelper"/>.

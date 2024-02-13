@@ -1,4 +1,4 @@
-using Elima.Common.Logging;
+﻿using Elima.Common.Logging;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Runtime.ExceptionServices;

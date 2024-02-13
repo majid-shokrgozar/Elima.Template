@@ -1,4 +1,4 @@
-namespace Elima.Common;
+﻿namespace Elima.Common;
 
 public interface IUserFriendlyException : IBusinessException
 {

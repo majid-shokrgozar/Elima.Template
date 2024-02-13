@@ -1,4 +1,4 @@
-namespace Elima.Common.Text.Formatting;
+﻿namespace Elima.Common.Text.Formatting;
 
 internal class FormatStringToken
 {

@@ -1,4 +1,4 @@
-using Elima.Common.System;
+﻿using Elima.Common.System;
 using JetBrains.Annotations;
 using System;
 using System.Globalization;

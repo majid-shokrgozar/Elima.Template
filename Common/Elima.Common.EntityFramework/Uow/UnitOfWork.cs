@@ -43,7 +43,7 @@ public class UnitOfWork : IUnitOfWork
         //IUnitOfWorkEventPublisher unitOfWorkEventPublisher,
         IEnumerable<IEfCoreDbContext> databases)
     {
-        //UnitOfWorkEventPublisher = unitOfWorkEventPublisher;
+        // UnitOfWorkEventPublisher = unitOfWorkEventPublisher;
         _databases = databases;
     }
 
@@ -268,6 +268,7 @@ public class UnitOfWork : IUnitOfWork
             }
             catch
             {
+                //ignore
             }
         }
     }

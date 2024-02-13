@@ -22,6 +22,7 @@ public abstract class CreationAuditedAggregateRoot : AggregateRoot, ICreationAud
 /// <typeparam name="TKey">Type of the primary key of the entity</typeparam>
 [Serializable]
 public abstract class CreationAuditedAggregateRoot<TKey> : AggregateRoot<TKey>, ICreationAuditedObject
+     where TKey : notnull
 {
     /// <inheritdoc />
     public virtual DateTime CreationTime { get; set; }

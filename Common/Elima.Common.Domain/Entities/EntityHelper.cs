@@ -1,4 +1,4 @@
-using Elima.Common.Domain.Values;
+﻿using Elima.Common.Domain.Values;
 using Elima.Common.Reflection;
 using System;
 using System.Collections.Generic;
