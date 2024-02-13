@@ -35,9 +35,9 @@ public class SampleGetListEndpoint : EndpointElimaResultWithMapping<SampleGetLis
         AllowAnonymous();
     }
 
-    public async override Task HandleAsync(SampleGetListRequest req, CancellationToken ct)
+    public async override Task HandleAsync(SampleGetListRequest request, CancellationToken ct)
     {
-        var result = await _sender.Send(new SampleGetListQuery(), ct);
+        var result = await _sender.Send(MapToCommandOrQuery(request), ct);
 
         await SendAsync(result, ct);
     }

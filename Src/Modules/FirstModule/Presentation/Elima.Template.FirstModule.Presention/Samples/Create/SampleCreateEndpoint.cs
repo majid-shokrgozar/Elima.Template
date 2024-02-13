@@ -20,9 +20,9 @@ public class SampleCreateEndpoint : EndpointElimaResultWithMapping<SampleCreateR
         AllowAnonymous();
     }
 
-    public override async Task HandleAsync(SampleCreateRequest req, CancellationToken ct)
+    public override async Task HandleAsync(SampleCreateRequest request, CancellationToken ct)
     {
-        var result = await _sender.Send(MapToCommandOrQuery(req), ct);
+        var result = await _sender.Send(MapToCommandOrQuery(request), ct);
         await SendAsync(result, ct);
     }
 
