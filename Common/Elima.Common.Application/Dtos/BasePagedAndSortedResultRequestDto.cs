@@ -6,7 +6,7 @@ namespace Elima.Common.Application;
 /// Simply implements <see cref="IPagedAndSortedResultRequest"/>.
 /// </summary>
 [Serializable]
-public class BasePagedAndSortedResultRequestDto : BasePagedResultRequestDto, IPagedAndSortedResultRequest
+public record BasePagedAndSortedResultRequestDto : BasePagedResultRequestDto, IPagedAndSortedResultRequest
 {
     public virtual string? Sorting { get; set; }
 }

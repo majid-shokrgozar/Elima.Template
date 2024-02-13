@@ -10,7 +10,7 @@ namespace Elima.Common.Application;
 /// Simply implements <see cref="ILimitedResultRequest"/>.
 /// </summary>
 [Serializable]
-public class BaseLimitedResultRequestDto : ILimitedResultRequest
+public record BaseLimitedResultRequestDto : ILimitedResultRequest
 {
     /// <summary>
     /// Default value: 10.

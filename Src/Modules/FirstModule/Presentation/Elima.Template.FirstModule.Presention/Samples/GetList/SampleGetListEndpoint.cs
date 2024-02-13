@@ -15,12 +15,7 @@ public record SampleGetListRequest : PagedResultRequest
     public string? Name { get; set; }
 }
 
-public record SampleGetListResponse(long TotalCount, IReadOnlyList<SampleDto> Items)
-{
-}
-
-
-public class SampleGetListEndpoint : EndpointElimaResultWithMapping<SampleGetListRequest, SampleGetListResponse, SampleGetListQuery, PagedResultDto<SampleDto>>
+public class SampleGetListEndpoint : EndpointElimaResultWithMapping<SampleGetListRequest, PagedResultResponse<SampleDto>, SampleGetListQuery, PagedResultDto<SampleDto>>
 {
     private readonly ISender _sender;
 
@@ -47,8 +42,8 @@ public class SampleGetListEndpoint : EndpointElimaResultWithMapping<SampleGetLis
         return new SampleGetListQuery() { MaxResultCount = 10, SkipCount = 0 };
     }
 
-    public override Task<SampleGetListResponse> MapToResponseAsync(PagedResultDto<SampleDto> e, CancellationToken ct = default)
+    public override Task<PagedResultResponse<SampleDto>> MapToResponseAsync(PagedResultDto<SampleDto> e, CancellationToken ct = default)
     {
-        return Task.FromResult(new SampleGetListResponse(e.TotalCount, e.Items));
+        return Task.FromResult(new PagedResultResponse<SampleDto>(e.TotalCount, e.Items));
     }
 }

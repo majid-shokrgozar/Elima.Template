@@ -7,7 +7,7 @@ namespace Elima.Common.Application;
 /// Simply implements <see cref="IPagedResultRequest"/>.
 /// </summary>
 [Serializable]
-public class BasePagedResultRequestDto : BaseLimitedResultRequestDto, IPagedResultRequest
+public record BasePagedResultRequestDto : BaseLimitedResultRequestDto, IPagedResultRequest
 {
     [Range(0, int.MaxValue)]
     public virtual int SkipCount { get; set; }

@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace Elima.Template.FirstModule.Application.UseCases.Samples.GetList;
 
-public class SampleGetListQuery : PagedResultQuery<SampleDto>
+public record SampleGetListQuery : PagedResultQuery<SampleDto>
 {
+    public SampleGetListQuery()
+    {
+    }
 }
