@@ -15,8 +15,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\Common\Elima.Common.Presentation\Elima.Common.Presentation.csproj" />
     <ProjectReference Include="..\..\..\..\..\Common\Elima.Common.Results.FastEndpoints\Elima.Common.Results.FastEndpoints.csproj" />
-    <ProjectReference Include="..\..\Core\Elima.Template.FirstModule.Application\Elima.Template.FirstModule.Application.csproj" />
     <ProjectReference Include="..\..\Core\Elima.Template.FirstModule.Domain\Elima.Template.FirstModule.Domain.csproj" />
+    <ProjectReference Include="..\..\Core\Elima.Template.CoreModule.Application\Elima.Template.CoreModule.Application.csproj" />
   </ItemGroup>
 
 </Project>

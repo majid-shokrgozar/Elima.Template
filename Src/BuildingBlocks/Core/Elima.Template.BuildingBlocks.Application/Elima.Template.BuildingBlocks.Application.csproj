@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\Common\Elima.Common.Modularity.Autofac\Elima.Common.Modularity.Autofac.csproj" />
-    <ProjectReference Include="..\..\..\Modules\FirstModule\Core\Elima.Template.FirstModule.Application\Elima.Template.FirstModule.Application.csproj" />
+    <ProjectReference Include="..\..\..\Modules\FirstModule\Core\Elima.Template.CoreModule.Application\Elima.Template.CoreModule.Application.csproj" />
   </ItemGroup>
 
 </Project>
