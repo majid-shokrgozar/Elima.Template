@@ -1,7 +1,8 @@
-﻿using Elima.Common.EntityFramework.Repositories;
+﻿using Elima.Common.EntityFramework.EntityFrameworkCore;
+using Elima.Common.EntityFramework.Repositories;
 
 namespace DigiPay.Template.CoreModule.Domain.Samples;
 
-public interface ISampleRepository:IEfCoreRepository<Sample>
+public interface ISampleRepository : ICommandRepository<IEfCoreDbContext, Sample>
 {
 }

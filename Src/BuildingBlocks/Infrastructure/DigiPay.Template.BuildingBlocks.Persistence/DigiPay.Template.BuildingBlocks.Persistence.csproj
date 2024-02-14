@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\Common\Elima.Common.Modularity.Autofac\Elima.Common.Modularity.Autofac.csproj" />
+    <ProjectReference Include="..\..\..\Modules\CoreModule\Infrastructure\DigiPay.Template.CoreModule.Persistence\DigiPay.Template.CoreModule.Persistence.csproj" />
     <ProjectReference Include="..\..\..\Modules\FirstModule\Infrastructure\DigiPay.Template.FirstModule.Persistence\DigiPay.Template.FirstModule.Persistence.csproj" />
   </ItemGroup>
 

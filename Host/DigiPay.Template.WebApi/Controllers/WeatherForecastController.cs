@@ -1,6 +1,6 @@
 ﻿using Elima.Common.EntityFramework.Uow;
-using DigiPay.Template.FirstModule.Domain.Samples;
 using Microsoft.AspNetCore.Mvc;
+using DigiPay.Template.CoreModule.Domain.Samples;
 
 namespace DigiPay.Template.WebApi.Controllers
 {
@@ -46,10 +46,10 @@ namespace DigiPay.Template.WebApi.Controllers
             await _unitOfWork.SaveChangesAsync();
 
 
-
-            var list = await _sampleRepository.GetListAsync();
-            return list
-            .ToArray();
+            return null;
+            //var list = await _sampleRepository.GetListAsync();
+            //return list
+            //.ToArray();
         }
     }
 }

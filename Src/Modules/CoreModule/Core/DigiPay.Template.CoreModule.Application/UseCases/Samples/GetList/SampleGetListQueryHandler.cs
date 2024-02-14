@@ -20,8 +20,8 @@ namespace DigiPay.Template.CoreModule.Application.UseCases.Samples.GetList
 
         public async Task<PagedResult<SampleDto>> Handle(SampleGetListQuery request, CancellationToken cancellationToken)
         {
-            var list = await _sampleRepository.GetPagedListAsync(request.SkipCount, request.MaxResultCount, "");
-            var count = await _sampleRepository.GetCountAsync();
+            var list = new List<Sample>();// await _sampleRepository.GetPagedListAsync(request.SkipCount, request.MaxResultCount, "");
+            var count = 0;// await _sampleRepository.GetCountAsync();
 
             return new PagedResultDto<SampleDto>(count, list.Select(x => new SampleDto(x.Name)).ToList());
         }

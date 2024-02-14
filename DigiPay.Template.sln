@@ -71,6 +71,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigiPay.Template.CoreModule
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigiPay.Template.CoreModule.Presention", "Src\Modules\CoreModule\Presentation\DigiPay.Template.CoreModule.Presention\DigiPay.Template.CoreModule.Presention.csproj", "{B99D4452-DBF1-476C-AB97-12D7E5286A34}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elima.Common.EntityFramework.Specification", "Common\Elima.Common.EntityFramework.Specification\Elima.Common.EntityFramework.Specification.csproj", "{1255D017-3B51-4AF3-B4BB-FD42218CAD87}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -165,6 +167,10 @@ Global
 		{B99D4452-DBF1-476C-AB97-12D7E5286A34}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B99D4452-DBF1-476C-AB97-12D7E5286A34}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B99D4452-DBF1-476C-AB97-12D7E5286A34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1255D017-3B51-4AF3-B4BB-FD42218CAD87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1255D017-3B51-4AF3-B4BB-FD42218CAD87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1255D017-3B51-4AF3-B4BB-FD42218CAD87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1255D017-3B51-4AF3-B4BB-FD42218CAD87}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -201,6 +207,7 @@ Global
 		{2B427324-9C4E-4BA3-836B-E9BB92162C60} = {903992CB-A193-4019-9C84-1B012E18970A}
 		{4D015E85-944D-458F-95FA-6B63D33C9C2C} = {903992CB-A193-4019-9C84-1B012E18970A}
 		{B99D4452-DBF1-476C-AB97-12D7E5286A34} = {21EF0E26-5F57-44E7-96C2-6DA0CD361C42}
+		{1255D017-3B51-4AF3-B4BB-FD42218CAD87} = {3E51E77E-8F3D-416A-AB96-D57695A675F7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9DD064A5-DEC9-4366-B9CF-12F4CB89E7B5}
