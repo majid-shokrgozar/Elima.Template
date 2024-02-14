@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Elima.Common.EntityFramework.Repositories;
 
-public class QueryRepository<TDbContext, TEntity> : BaseRepository<TDbContext, TEntity>, IQueryRepository<TDbContext, TEntity>
+public class QueryRepository<TDbContext, TEntity> : BaseRepository<TDbContext, TEntity>, IQueryRepository<TEntity>
     where TDbContext : IEfCoreDbContext
     where TEntity : class, IEntity
 {
@@ -49,7 +49,7 @@ public class QueryRepository<TDbContext, TEntity> : BaseRepository<TDbContext, T
     }
 }
 
-public class QueryRepository<TDbContext, TEntity, TKey> : QueryRepository<TDbContext, TEntity>, IQueryRepository<TDbContext, TEntity, TKey>
+public class QueryRepository<TDbContext, TEntity, TKey> : QueryRepository<TDbContext, TEntity>, IQueryRepository< TEntity, TKey>
     where TDbContext : IEfCoreDbContext
      where TEntity : class, IEntity<TKey>
 {

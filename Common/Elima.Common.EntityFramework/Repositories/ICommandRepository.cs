@@ -9,8 +9,7 @@ using JetBrains.Annotations;
 
 namespace Elima.Common.EntityFramework.Repositories;
 
-public interface ICommandRepository<TDbContext,TEntity> :IBasicRepository<TDbContext,TEntity>
-    where TDbContext : IEfCoreDbContext
+public interface ICommandRepository<TEntity> :IBasicRepository<TEntity>
     where TEntity : class, IEntity
 {
     Task<TEntity> InsertAsync([NotNull] TEntity entity, CancellationToken cancellationToken = default);
@@ -30,8 +29,7 @@ public interface ICommandRepository<TDbContext,TEntity> :IBasicRepository<TDbCon
     );
 }
 
-public interface ICommandRepository<TDbContext,TEntity, TKey> : ICommandRepository<TDbContext,TEntity>,IBasicRepository<TDbContext,TEntity, TKey>
-    where TDbContext : IEfCoreDbContext
+public interface ICommandRepository<TEntity, TKey> : ICommandRepository<TEntity>,IBasicRepository<TEntity, TKey>
     where TEntity : class, IEntity<TKey>
 {
     Task DeleteAsync(TKey id, CancellationToken cancellationToken = default);

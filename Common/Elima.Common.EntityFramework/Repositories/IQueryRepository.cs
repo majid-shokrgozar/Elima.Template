@@ -9,8 +9,7 @@ using Elima.Common.EntityFramework.EntityFrameworkCore;
 
 namespace Elima.Common.EntityFramework.Repositories;
 
-public interface IQueryRepository<TDbContext,TEntity> : IBasicRepository<TDbContext,TEntity>
-    where TDbContext : IEfCoreDbContext
+public interface IQueryRepository<TEntity> : IBasicRepository<TEntity>
     where TEntity : class, IEntity
 {
     Task<long> GetCountAsync(CancellationToken cancellationToken = default);
@@ -19,8 +18,7 @@ public interface IQueryRepository<TDbContext,TEntity> : IBasicRepository<TDbCont
     Task<List<TEntity>> GetPagedListAsync(int skipCount, int maxResultCount, string sorting, CancellationToken cancellationToken = default);
 }
 
-public interface IQueryRepository<TDbContext,TEntity, TKey>: IQueryRepository<TDbContext,TEntity>, IBasicRepository<TDbContext,TEntity, TKey>
-    where TDbContext : IEfCoreDbContext
+public interface IQueryRepository<TEntity, TKey>: IQueryRepository<TEntity>, IBasicRepository<TEntity, TKey>
     where TEntity : class, IEntity<TKey>
 {
 }

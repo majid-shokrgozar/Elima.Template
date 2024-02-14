@@ -11,10 +11,5 @@ namespace DigiPay.Template.CoreModule.Persistence.Samples
         public EfCoreSampleRepository(SampleModuleDbContext dbContext) : base(dbContext)
         {
         }
-
-        Task<IEfCoreDbContext> IBasicRepository<IEfCoreDbContext, Sample>.GetDbContextAsync()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

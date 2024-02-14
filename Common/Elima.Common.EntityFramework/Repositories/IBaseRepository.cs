@@ -19,11 +19,10 @@ public interface IBaseRepository
 {
 }
 
-public interface IBasicRepository<TDbContext,TEntity> :IBaseRepository
-    where TDbContext : IEfCoreDbContext
+public interface IBasicRepository<TEntity> :IBaseRepository
     where TEntity : class, IEntity
 {
-    Task<TDbContext> GetDbContextAsync();
+    Task<IEfCoreDbContext> GetDbContextAsync();
 
     Task<DbSet<TEntity>> GetDbSetAsync();
 
@@ -42,8 +41,7 @@ public interface IBasicRepository<TDbContext,TEntity> :IBaseRepository
     Task<IQueryable<TEntity>> WithDetailsAsync(params Expression<Func<TEntity, object>>[] propertySelectors);
 }
 
-public interface IBasicRepository<TDbContext, TEntity, TKey> : IBasicRepository<TDbContext, TEntity>
-    where TDbContext : IEfCoreDbContext
+public interface IBasicRepository< TEntity, TKey> : IBasicRepository< TEntity>
     where TEntity : class, IEntity<TKey>
 {
     Task<TEntity?> GetAsync(TKey id, CancellationToken cancellationToken = default);

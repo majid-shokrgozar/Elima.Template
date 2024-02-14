@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace Elima.Common.EntityFramework.Repositories;
 
-public abstract class BaseRepository<TDbContext, TEntity> : IBasicRepository<TDbContext, TEntity>
+public abstract class BaseRepository<TDbContext, TEntity> : IBasicRepository<TEntity>
     where TDbContext : IEfCoreDbContext
     where TEntity : class, IEntity
 {
@@ -29,6 +29,10 @@ public abstract class BaseRepository<TDbContext, TEntity> : IBasicRepository<TDb
     public IServiceProvider ServiceProvider { get; set; } = default!;
     public IDataFilter DataFilter { get; set; } = default!;
 
+    async Task<IEfCoreDbContext> IBasicRepository<TEntity>.GetDbContextAsync()
+    {
+      return (await GetDbContextAsync());
+    }
     public Task<TDbContext> GetDbContextAsync()
     {
         return Task.FromResult(_dbContext);
@@ -124,9 +128,10 @@ public abstract class BaseRepository<TDbContext, TEntity> : IBasicRepository<TDb
 
         return query;
     }
+
 }
 
-public abstract class BaseRepository<TDbContext, TEntity, TKey> : BaseRepository<TDbContext, TEntity>, IBasicRepository<TDbContext, TEntity, TKey>
+public abstract class BaseRepository<TDbContext, TEntity, TKey> : BaseRepository<TDbContext, TEntity>, IBasicRepository<TEntity, TKey>
      where TDbContext : IEfCoreDbContext
     where TEntity : class, IEntity<TKey>
 {
