@@ -28,7 +28,7 @@ public class SampleGetListEndpoint : EndpointElimaResultWithMapping<SampleGetLis
     {
         var result = await _sender.Send(MapToCommandOrQuery(request), ct);
 
-        await SendAsync(result, ct);
+        await SendResultAsync(result, ct);
     }
 
     public override SampleGetListQuery MapToCommandOrQuery(SampleGetListRequest request)

@@ -11,16 +11,16 @@ using System.Threading.Tasks;
 
 namespace DigiPay.Template.CoreModule.Application.UseCases.Samples.Get;
 
-public class SampleGetQueryHandler : IQueryHandler<SampleGetQuery, SampleDto>
+public class SampleGetByIdQueryHandler : IQueryHandler<SampleGetByIdQuery, SampleDto>
 {
     private readonly IQuerySampleRepository _sampleRepository;
 
-    public SampleGetQueryHandler(IQuerySampleRepository sampleRepository)
+    public SampleGetByIdQueryHandler(IQuerySampleRepository sampleRepository)
     {
         _sampleRepository = sampleRepository;
     }
 
-    public async Task<Result<SampleDto>> Handle(SampleGetQuery request, CancellationToken cancellationToken)
+    public async Task<Result<SampleDto>> Handle(SampleGetByIdQuery request, CancellationToken cancellationToken)
     {
         var specification = new GetSampleListSpecification(request.Id);
 

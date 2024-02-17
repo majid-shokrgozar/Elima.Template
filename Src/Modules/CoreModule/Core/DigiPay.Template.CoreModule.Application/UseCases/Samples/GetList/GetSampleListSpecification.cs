@@ -11,7 +11,7 @@ public class GetSampleListSpecification : Specification<Sample, SampleDto>
             .Select(x => new SampleDto(x.Id.Value,x.Name))
             .Skip(request.SkipCount)
             .Take(request.MaxResultCount)
-            .Where(x => x.Name.Equals(request.Name))
+            .Where(x => x.Name.Equals(request.Name),!string.IsNullOrEmpty(request.Name))
             .AsNoTracking();
     }
 }

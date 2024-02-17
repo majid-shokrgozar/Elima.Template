@@ -1,3 +1,3 @@
 ﻿namespace DigiPay.Template.CoreModule.Presentation.Samples;
 
-public record SampleGetRequest(Guid Id) { }
+public record SampleGetByIdResponse(Guid Id, string Name) { }

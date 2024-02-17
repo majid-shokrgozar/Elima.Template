@@ -7,6 +7,6 @@ using System.Threading.Tasks;
 
 namespace DigiPay.Template.CoreModule.Application.UseCases.Samples;
 
-public record SampleGetQuery(Guid Id) : IQuery<SampleDto>
+public record SampleGetByIdQuery(Guid Id) : IQuery<SampleDto>
 {
 }

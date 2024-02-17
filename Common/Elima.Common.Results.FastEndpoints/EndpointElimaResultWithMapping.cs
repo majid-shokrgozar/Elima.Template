@@ -10,14 +10,15 @@ using System.Threading.Tasks;
 using ProblemDetails = Elima.Common.ExceptionHandling.ProblemDetails;
 namespace FastEndpoints;
 
-public abstract class EndpointElimaResultWithMapping<TRequest, TResponse, TCommandOrQuery, TResultValue> : Endpoint<TRequest, TResponse>
+
+public abstract class EndpointElimaResultWithMapping<TRequest, TCommandOrQuery>:Endpoint<TRequest>
     where TRequest : notnull
 {
-    public Task SendAsync(IResultWithValue<TResultValue> result, Func<TResultValue, TResponse>? mapper, CancellationToken cancellationToken)
+    public Task SendResultAsync(IResult result, CancellationToken cancellationToken)
     {
         return result.Status switch
         {
-            ResultStatus.Succeeded => SendSucceededAsync(result, mapper, cancellationToken),
+            ResultStatus.Succeeded => SendSucceededAsync(cancellationToken),
             ResultStatus.BadRequest => SendBadRequestAsync(result, cancellationToken),
             ResultStatus.Unauthorized => SendUnauthorizedAsync(result, cancellationToken),
             ResultStatus.Forbidden => SendForbiddenAsync(result, cancellationToken),
@@ -25,68 +26,66 @@ public abstract class EndpointElimaResultWithMapping<TRequest, TResponse, TComma
             ResultStatus.Conflict => SendConflictAsync(result, cancellationToken),
             ResultStatus.Failed => SendFailedAsync(result, cancellationToken),
             ResultStatus.NotImplemented => SendNotImplementedAsync(result, cancellationToken),
-            ResultStatus.Unprocessable => SendNotUnprocessableAsync(result, cancellationToken),
+            ResultStatus.Unprocessable => SendNotProcessableAsync(result, cancellationToken),
             _ => throw new NotImplementedException(),
         };
     }
 
-    public Task SendAsync(IResultWithValue<TResultValue> result, CancellationToken cancellationToken)
+
+    protected async Task SendNotProcessableAsync(IResult result, CancellationToken cancellationToken)
     {
-        return SendAsync(result, null, cancellationToken);
+        await SendProblemDetailsAsync(ConvertResultToProblemDetails(result, string.Empty, string.Empty, string.Empty), (int)result.Status, cancellationToken);
     }
 
-    private async Task SendNotUnprocessableAsync(IResultWithValue<TResultValue> result, CancellationToken cancellationToken)
+    protected async Task SendNotImplementedAsync(IResult result, CancellationToken cancellationToken)
     {
-        await SendProblemDetailsAsync(ConvertResulToProblemDetails(result, string.Empty, string.Empty, string.Empty), (int)result.Status, cancellationToken);
+        await SendProblemDetailsAsync(ConvertResultToProblemDetails(result, string.Empty, string.Empty, string.Empty), (int)result.Status, cancellationToken);
     }
 
-    private async Task SendNotImplementedAsync(IResultWithValue<TResultValue> result, CancellationToken cancellationToken)
+    protected async Task SendFailedAsync(IResult result, CancellationToken cancellationToken)
     {
-        await SendProblemDetailsAsync(ConvertResulToProblemDetails(result, string.Empty, string.Empty, string.Empty), (int)result.Status, cancellationToken);
+        await SendProblemDetailsAsync(ConvertResultToProblemDetails(result, string.Empty, string.Empty, string.Empty), (int)result.Status, cancellationToken);
     }
 
-    private async Task SendFailedAsync(IResultWithValue<TResultValue> result, CancellationToken cancellationToken)
+    protected async Task SendConflictAsync(IResult result, CancellationToken cancellationToken)
     {
-        await SendProblemDetailsAsync(ConvertResulToProblemDetails(result, string.Empty, string.Empty, string.Empty), (int)result.Status, cancellationToken);
+        await SendProblemDetailsAsync(ConvertResultToProblemDetails(result, string.Empty, string.Empty, string.Empty), (int)result.Status, cancellationToken);
     }
 
-    private async Task SendConflictAsync(IResultWithValue<TResultValue> result, CancellationToken cancellationToken)
+    protected async Task SendNotFoundAsync(IResult result, CancellationToken cancellationToken)
     {
-        await SendProblemDetailsAsync(ConvertResulToProblemDetails(result, string.Empty, string.Empty, string.Empty), (int)result.Status, cancellationToken);
+        await SendProblemDetailsAsync(ConvertResultToProblemDetails(result, string.Empty, string.Empty, string.Empty), (int)result.Status, cancellationToken);
     }
 
-    private async Task SendNotFoundAsync(IResultWithValue<TResultValue> result, CancellationToken cancellationToken)
+    protected async Task SendForbiddenAsync(IResult result, CancellationToken cancellationToken)
     {
-        await SendProblemDetailsAsync(ConvertResulToProblemDetails(result, string.Empty, string.Empty, string.Empty), (int)result.Status, cancellationToken);
+        await SendProblemDetailsAsync(ConvertResultToProblemDetails(result, string.Empty, string.Empty, string.Empty), (int)result.Status, cancellationToken);
     }
 
-    private async Task SendForbiddenAsync(IResultWithValue<TResultValue> result, CancellationToken cancellationToken)
+    protected async Task SendUnauthorizedAsync(IResult result, CancellationToken cancellationToken)
     {
-        await SendProblemDetailsAsync(ConvertResulToProblemDetails(result, string.Empty, string.Empty, string.Empty), (int)result.Status, cancellationToken);
+        await SendProblemDetailsAsync(ConvertResultToProblemDetails(result, string.Empty, string.Empty, string.Empty), (int)result.Status, cancellationToken);
     }
 
-    private async Task SendUnauthorizedAsync(IResultWithValue<TResultValue> result, CancellationToken cancellationToken)
+    protected async Task SendBadRequestAsync(IResult result, CancellationToken cancellationToken)
     {
-        await SendProblemDetailsAsync(ConvertResulToProblemDetails(result, string.Empty, string.Empty, string.Empty), (int)result.Status, cancellationToken);
+        await SendProblemDetailsAsync(ConvertResultToProblemDetails(result, "ValidationError", string.Empty, string.Empty), (int)result.Status, cancellationToken);
     }
 
-    private async Task SendBadRequestAsync(IResultWithValue<TResultValue> result, CancellationToken cancellationToken)
-    {
-        await SendProblemDetailsAsync(ConvertResulToProblemDetails(result, "ValidationError", string.Empty, string.Empty), (int)result.Status, cancellationToken);
-    }
-
-    private async Task SendProblemDetailsAsync(Elima.Common.ExceptionHandling.ProblemDetails problemDetails, int httpStatus, CancellationToken cancellationToken)
+    protected async Task SendProblemDetailsAsync(Elima.Common.ExceptionHandling.ProblemDetails problemDetails, int httpStatus, CancellationToken cancellationToken)
     {
         await SendStringAsync(System.Text.Json.JsonSerializer.Serialize(problemDetails), httpStatus, "application/json", cancellationToken);
     }
 
-    private Elima.Common.ExceptionHandling.ProblemDetails ConvertResulToProblemDetails(IResultWithValue<TResultValue> result, string defaultError, string instance, string type)
+    protected Elima.Common.ExceptionHandling.ProblemDetails ConvertResultToProblemDetails(IResult result, string defaultError, string instance, string type)
     {
-        var problemDetails = new Elima.Common.ExceptionHandling.ProblemDetails();
-        problemDetails.Title = result.Errors.Count == 1 ? result.Errors[0].Message : defaultError;
-        problemDetails.Status = (int)result.Status;
-        problemDetails.Type = type;
-        problemDetails.Instance = instance;
+        var problemDetails = new Elima.Common.ExceptionHandling.ProblemDetails
+        {
+            Title = result.Errors.Count == 1 ? result.Errors[0].Message : defaultError,
+            Status = (int)result.Status,
+            Type = type,
+            Instance = instance
+        };
 
         foreach (var error in result.Errors)
         {
@@ -120,7 +119,45 @@ public abstract class EndpointElimaResultWithMapping<TRequest, TResponse, TComma
         return problemDetails;
     }
 
-    private async Task SendSucceededAsync(IResultWithValue<TResultValue> result, Func<TResultValue, TResponse>? mapper, CancellationToken cancellationToken)
+    private async Task SendSucceededAsync(CancellationToken cancellationToken)
+    {
+        await SendNoContentAsync(cancellationToken);
+    }
+
+    /// <summary>
+    /// override this method and place the logic for mapping the request dto to the desired domain entity
+    /// </summary>
+    /// <param name="r">the request dto</param>
+    public virtual TCommandOrQuery MapToCommandOrQuery(TRequest r)
+        => throw new NotImplementedException($"Please override the {nameof(MapToCommandOrQuery)} method!");
+
+    /// <summary>
+    /// override this method and place the logic for mapping the request dto to the desired domain entity
+    /// </summary>
+    /// <param name="r">the request dto to map from</param>
+    /// <param name="ct">a cancellation token</param>
+    public virtual Task<TCommandOrQuery> MapToCommandOrQueryAsync(TRequest r, CancellationToken ct = default)
+        => Task.FromResult(MapToCommandOrQuery(r));
+}
+
+public abstract class EndpointElimaResultWithMapping<TRequest, TResponse, TCommandOrQuery, TResultValue> : EndpointElimaResultWithMapping<TRequest, TCommandOrQuery>
+    where TRequest : notnull
+{
+
+    public Task SendResultAsync(IResultWithValue<TResultValue> result, Func<TResultValue, TResponse>? mapper, CancellationToken cancellationToken)
+    {
+        if (result.Status == ResultStatus.Succeeded)
+            return SendSucceededAsync(result, mapper, cancellationToken);
+
+        return base.SendResultAsync(result, cancellationToken);
+    }
+
+    public Task SendResultAsync(IResultWithValue<TResultValue> result, CancellationToken cancellationToken)
+    {
+        return SendResultAsync(result, null, cancellationToken);
+    }
+
+    protected async Task SendSucceededAsync(IResultWithValue<TResultValue> result, Func<TResultValue, TResponse>? mapper, CancellationToken cancellationToken)
     {
         if (result.Value is null)
         {
@@ -141,26 +178,6 @@ public abstract class EndpointElimaResultWithMapping<TRequest, TResponse, TComma
         await SendStringAsync(System.Text.Json.JsonSerializer.Serialize(response), 200, "application/json", cancellationToken);
     }
 
-    /// <summary>
-    /// override this method and place the logic for mapping the request dto to the desired domain entity
-    /// </summary>
-    /// <param name="r">the request dto</param>
-    public virtual TCommandOrQuery MapToCommandOrQuery(TRequest r)
-        => throw new NotImplementedException($"Please override the {nameof(MapToCommandOrQuery)} method!");
-
-    /// <summary>
-    /// override this method and place the logic for mapping the request dto to the desired domain entity
-    /// </summary>
-    /// <param name="r">the request dto to map from</param>
-    /// <param name="ct">a cancellation token</param>
-    public virtual Task<TCommandOrQuery> MapToCommandOrQueryAsync(TRequest r, CancellationToken ct = default)
-        => Task.FromResult(MapToCommandOrQuery(r));
-
-    /// <summary>
-    /// override this method and place the logic for mapping a domain entity to a response dto
-    /// </summary>
-    /// <param name="e">the domain entity to map from</param>
-    /// <param name="ct">a cancellation token</param>
     public virtual TResponse MapToResponse(TResultValue e)
         => throw new NotImplementedException($"Please override the {nameof(MapToResponseAsync)} method!");
 
