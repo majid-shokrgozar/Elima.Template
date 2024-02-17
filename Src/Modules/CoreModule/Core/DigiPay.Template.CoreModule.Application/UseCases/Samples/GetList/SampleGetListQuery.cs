@@ -10,9 +10,6 @@ using System.Threading.Tasks;
 
 namespace DigiPay.Template.CoreModule.Application.UseCases.Samples.GetList;
 
-public record SampleGetListQuery : PagedResultQuery<SampleDto>
+public record SampleGetListQuery(string? Name) : PagedResultQuery<SampleDto>
 {
-    public SampleGetListQuery()
-    {
-    }
 }

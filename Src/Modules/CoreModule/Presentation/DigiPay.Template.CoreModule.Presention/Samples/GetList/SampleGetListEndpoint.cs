@@ -7,13 +7,7 @@ using DigiPay.Template.CoreModule.Application.UseCases.Samples.GetList;
 using FastEndpoints;
 using MediatR;
 
-namespace DigiPay.Template.CoreModule.Presention.Samples.GetList;
-
-
-public record SampleGetListRequest : PagedResultRequest
-{
-    public string? Name { get; set; }
-}
+namespace DigiPay.Template.CoreModule.Presentation.Samples;
 
 public class SampleGetListEndpoint : EndpointElimaResultWithMapping<SampleGetListRequest, PagedResultResponse<SampleDto>, SampleGetListQuery, PagedResultDto<SampleDto>>
 {
@@ -39,7 +33,7 @@ public class SampleGetListEndpoint : EndpointElimaResultWithMapping<SampleGetLis
 
     public override SampleGetListQuery MapToCommandOrQuery(SampleGetListRequest request)
     {
-        return new SampleGetListQuery() { MaxResultCount = 10, SkipCount = 0 };
+        return new SampleGetListQuery(request.Name) { MaxResultCount = request.MaxResultCount, SkipCount = request.SkipCount };
     }
 
     public override Task<PagedResultResponse<SampleDto>> MapToResponseAsync(PagedResultDto<SampleDto> e, CancellationToken ct = default)

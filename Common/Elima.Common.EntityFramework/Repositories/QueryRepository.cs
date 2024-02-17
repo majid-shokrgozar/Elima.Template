@@ -11,15 +11,15 @@ using System.Threading.Tasks;
 
 namespace Elima.Common.EntityFramework.Repositories;
 
-public class QueryRepository<TDbContext, TEntity> : BaseRepository<TDbContext, TEntity>, IQueryRepository<TEntity>
+public abstract class QueryRepository<TDbContext, TEntity> : BaseRepository<TDbContext, TEntity>, IQueryRepository<TEntity>
     where TDbContext : IEfCoreDbContext
     where TEntity : class, IEntity
 {
-    public QueryRepository(TDbContext dbContext) : base(dbContext)
+    protected QueryRepository(TDbContext dbContext) : base(dbContext)
     {
     }
 
-    public async Task<long> GetCountAsync(CancellationToken cancellationToken = default)
+    public async Task<long> GetLongCountAsync(CancellationToken cancellationToken = default)
     {
         return await(await GetQueryableAsync(cancellationToken)).LongCountAsync(cancellationToken);
     }
@@ -49,11 +49,11 @@ public class QueryRepository<TDbContext, TEntity> : BaseRepository<TDbContext, T
     }
 }
 
-public class QueryRepository<TDbContext, TEntity, TKey> : QueryRepository<TDbContext, TEntity>, IQueryRepository< TEntity, TKey>
+public abstract class QueryRepository<TDbContext, TEntity, TKey> : QueryRepository<TDbContext, TEntity>, IQueryRepository< TEntity, TKey>
     where TDbContext : IEfCoreDbContext
      where TEntity : class, IEntity<TKey>
 {
-    public QueryRepository(TDbContext dbContext) : base(dbContext)
+    protected QueryRepository(TDbContext dbContext) : base(dbContext)
     {
     }
 

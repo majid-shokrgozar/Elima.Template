@@ -69,9 +69,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigiPay.Template.CoreModule
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigiPay.Template.CoreModule.Persistence", "Src\Modules\CoreModule\Infrastructure\DigiPay.Template.CoreModule.Persistence\DigiPay.Template.CoreModule.Persistence.csproj", "{4D015E85-944D-458F-95FA-6B63D33C9C2C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigiPay.Template.CoreModule.Presention", "Src\Modules\CoreModule\Presentation\DigiPay.Template.CoreModule.Presention\DigiPay.Template.CoreModule.Presention.csproj", "{B99D4452-DBF1-476C-AB97-12D7E5286A34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigiPay.Template.CoreModule.Presentation", "Src\Modules\CoreModule\Presentation\DigiPay.Template.CoreModule.Presention\DigiPay.Template.CoreModule.Presentation.csproj", "{B99D4452-DBF1-476C-AB97-12D7E5286A34}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elima.Common.EntityFramework.Specification", "Common\Elima.Common.EntityFramework.Specification\Elima.Common.EntityFramework.Specification.csproj", "{1255D017-3B51-4AF3-B4BB-FD42218CAD87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elima.Common.EntityFramework.Specification", "Common\Elima.Common.EntityFramework.Specification\Elima.Common.EntityFramework.Specification.csproj", "{1255D017-3B51-4AF3-B4BB-FD42218CAD87}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

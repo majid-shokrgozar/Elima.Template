@@ -7,23 +7,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DigiPay.Template.CoreModule.Application.UseCases.Samples.GetList
+namespace DigiPay.Template.CoreModule.Application.UseCases.Samples.GetList;
+
+public class SampleGetListQueryHandler : IPagedQueryHandler<SampleGetListQuery, SampleDto>
 {
-    public class SampleGetListQueryHandler : IPagedQueryHandler<SampleGetListQuery, SampleDto>
+    private readonly IQuerySampleRepository _sampleRepository;
+
+    public SampleGetListQueryHandler(IQuerySampleRepository sampleRepository)
     {
-        private readonly ISampleRepository _sampleRepository;
+        this._sampleRepository = sampleRepository;
+    }
 
-        public SampleGetListQueryHandler(ISampleRepository sampleRepository)
-        {
-            this._sampleRepository = sampleRepository;
-        }
+    public async Task<PagedResult<SampleDto>> Handle(SampleGetListQuery request, CancellationToken cancellationToken)
+    {
+        var spect = new GetSampleListSpecification(request);
 
-        public async Task<PagedResult<SampleDto>> Handle(SampleGetListQuery request, CancellationToken cancellationToken)
-        {
-            var list = new List<Sample>();// await _sampleRepository.GetPagedListAsync(request.SkipCount, request.MaxResultCount, "");
-            var count = 0;// await _sampleRepository.GetCountAsync();
+        var list = await _sampleRepository.GetListAsync(spect, cancellationToken);
 
-            return new PagedResultDto<SampleDto>(count, list.Select(x => new SampleDto(x.Name)).ToList());
-        }
+        var count = await _sampleRepository.GetCountAsync(spect, cancellationToken);
+
+        return new PagedResultDto<SampleDto>(count, list);
     }
 }

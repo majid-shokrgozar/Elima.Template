@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace Elima.Common.EntityFramework.Repositories;
 
-public class CommandRepository<TDbContext,TEntity> :BaseRepository<TDbContext,TEntity>, ICommandRepository<TEntity>
+public abstract class CommandRepository<TDbContext,TEntity> :BaseRepository<TDbContext,TEntity>, ICommandRepository<TEntity>
     where TDbContext : IEfCoreDbContext
     where TEntity : class, IEntity
 {
-    public CommandRepository(TDbContext dbContext) : base(dbContext)
+    protected CommandRepository(TDbContext dbContext) : base(dbContext)
     {
     }
 
@@ -68,11 +68,11 @@ public class CommandRepository<TDbContext,TEntity> :BaseRepository<TDbContext,TE
 }
 
 
-public class CommandRepository<TDbContext,TEntity, TKey> : CommandRepository<TDbContext,TEntity>, ICommandRepository<TEntity, TKey>
+public abstract class CommandRepository<TDbContext,TEntity, TKey> : CommandRepository<TDbContext,TEntity>, ICommandRepository<TEntity, TKey>
     where TDbContext : IEfCoreDbContext
     where TEntity : class, IEntity<TKey>
 {
-    public CommandRepository(TDbContext dbContext) : base(dbContext)
+    protected CommandRepository(TDbContext dbContext) : base(dbContext)
     {
     }
 

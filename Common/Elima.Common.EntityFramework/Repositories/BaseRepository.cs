@@ -73,6 +73,21 @@ public abstract class BaseRepository<TDbContext, TEntity> : IBasicRepository<TEn
         return (await GetDbSetAsync()).AsQueryable();
     }
 
+    protected IQueryable<TEntity> GetQueryable(CancellationToken cancellationToken = default)
+    {
+        return GetDbSet().AsQueryable();
+    }
+
+    protected DbSet<TEntity> GetDbSet()
+    {
+        return GetDbContext().Set<TEntity>();
+    }
+
+    protected TDbContext GetDbContext()
+    {
+        return _dbContext;
+    }
+
     public virtual async Task EnsureCollectionLoadedAsync<TProperty>(
             TEntity entity,
             Expression<Func<TEntity, IEnumerable<TProperty>>> propertyExpression,

@@ -1,5 +1,7 @@
-﻿namespace DigiPay.Template.CoreModule.Application.UseCases.Samples;
+﻿using Elima.Common.Application;
 
-public record SampleDto(string Name)
-{
+namespace DigiPay.Template.CoreModule.Application.UseCases.Samples;
+
+public record SampleDto(Guid Id, string Name):EntityDto<Guid>(Id) {
 }
+

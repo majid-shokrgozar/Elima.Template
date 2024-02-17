@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\Common\Elima.Common.EntityFramework\Elima.Common.EntityFramework.csproj" />
+    <ProjectReference Include="..\..\..\..\..\Common\Elima.Common.EntityFramework.Specification\Elima.Common.EntityFramework.Specification.csproj" />
   </ItemGroup>
 
 </Project>

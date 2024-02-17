@@ -1,4 +1,4 @@
-﻿namespace DigiPay.Template.CoreModule.Presention.Samples.Create;
+﻿namespace DigiPay.Template.CoreModule.Presentation.Samples;
 
 public record SampleCreateResponse(string Name)
 {

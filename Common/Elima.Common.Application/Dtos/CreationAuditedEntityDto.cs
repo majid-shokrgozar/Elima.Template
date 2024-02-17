@@ -7,7 +7,7 @@ namespace Elima.Common.Application;
 /// This class can be inherited by DTO classes to implement <see cref="ICreationAuditedObject"/> interface.
 /// </summary>
 [Serializable]
-public abstract class CreationAuditedEntityDto : EntityDto, ICreationAuditedObject
+public abstract record CreationAuditedEntityDto : EntityDto, ICreationAuditedObject
 {
     /// <inheritdoc />
     public DateTime CreationTime { get; set; }
@@ -21,8 +21,12 @@ public abstract class CreationAuditedEntityDto : EntityDto, ICreationAuditedObje
 /// </summary>
 /// <typeparam name="TPrimaryKey">Type of primary key</typeparam>
 [Serializable]
-public abstract class CreationAuditedEntityDto<TPrimaryKey> : EntityDto<TPrimaryKey>, ICreationAuditedObject
+public abstract record CreationAuditedEntityDto<TPrimaryKey> : EntityDto<TPrimaryKey>, ICreationAuditedObject
 {
+    protected CreationAuditedEntityDto(EntityDto<TPrimaryKey> original) : base(original)
+    {
+    }
+
     /// <inheritdoc />
     public DateTime CreationTime { get; set; }
 

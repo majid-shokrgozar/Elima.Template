@@ -72,7 +72,7 @@ public abstract class EndpointElimaResultWithMapping<TRequest, TResponse, TComma
 
     private async Task SendBadRequestAsync(IResultWithValue<TResultValue> result, CancellationToken cancellationToken)
     {
-        await SendProblemDetailsAsync(ConvertResulToProblemDetails(result,"ValidationError",string.Empty,string.Empty), (int)result.Status, cancellationToken);
+        await SendProblemDetailsAsync(ConvertResulToProblemDetails(result, "ValidationError", string.Empty, string.Empty), (int)result.Status, cancellationToken);
     }
 
     private async Task SendProblemDetailsAsync(Elima.Common.ExceptionHandling.ProblemDetails problemDetails, int httpStatus, CancellationToken cancellationToken)
@@ -80,7 +80,7 @@ public abstract class EndpointElimaResultWithMapping<TRequest, TResponse, TComma
         await SendStringAsync(System.Text.Json.JsonSerializer.Serialize(problemDetails), httpStatus, "application/json", cancellationToken);
     }
 
-    private Elima.Common.ExceptionHandling.ProblemDetails ConvertResulToProblemDetails(IResultWithValue<TResultValue> result, string defaultError, string instance,string type)
+    private Elima.Common.ExceptionHandling.ProblemDetails ConvertResulToProblemDetails(IResultWithValue<TResultValue> result, string defaultError, string instance, string type)
     {
         var problemDetails = new Elima.Common.ExceptionHandling.ProblemDetails();
         problemDetails.Title = result.Errors.Count == 1 ? result.Errors[0].Message : defaultError;
@@ -112,7 +112,7 @@ public abstract class EndpointElimaResultWithMapping<TRequest, TResponse, TComma
             {
                 Members = [error.PropertyName],
                 Message = error.ErrorMessage,
-                Code=error.ErrorCode,
+                Code = error.ErrorCode,
                 AttemptedValue = error.AttemptedValue
             });
         }
@@ -122,6 +122,11 @@ public abstract class EndpointElimaResultWithMapping<TRequest, TResponse, TComma
 
     private async Task SendSucceededAsync(IResultWithValue<TResultValue> result, Func<TResultValue, TResponse>? mapper, CancellationToken cancellationToken)
     {
+        if (result.Value is null)
+        {
+            await SendEmptyJsonObject(cancellationToken);
+            return;
+        }
         TResponse? response;
 
         if (mapper != null)
@@ -149,14 +154,17 @@ public abstract class EndpointElimaResultWithMapping<TRequest, TResponse, TComma
     /// <param name="r">the request dto to map from</param>
     /// <param name="ct">a cancellation token</param>
     public virtual Task<TCommandOrQuery> MapToCommandOrQueryAsync(TRequest r, CancellationToken ct = default)
-        => throw new NotImplementedException($"Please override the {nameof(MapToCommandOrQueryAsync)} method!");
+        => Task.FromResult(MapToCommandOrQuery(r));
 
     /// <summary>
     /// override this method and place the logic for mapping a domain entity to a response dto
     /// </summary>
     /// <param name="e">the domain entity to map from</param>
     /// <param name="ct">a cancellation token</param>
-    public virtual Task<TResponse> MapToResponseAsync(TResultValue e, CancellationToken ct = default)
+    public virtual TResponse MapToResponse(TResultValue e)
         => throw new NotImplementedException($"Please override the {nameof(MapToResponseAsync)} method!");
+
+    public virtual Task<TResponse> MapToResponseAsync(TResultValue e, CancellationToken ct = default)
+        => Task.FromResult(MapToResponse(e));
 
 }

@@ -26,10 +26,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Elima.Common.Modularity.Autofac\Elima.Common.Modularity.Autofac.csproj" />
+    <ProjectReference Include="..\..\Common\Elima.Common.Presentation\Elima.Common.Presentation.csproj" />
     <ProjectReference Include="..\..\Src\BuildingBlocks\Core\DigiPay.Template.BuildingBlocks.Application\DigiPay.Template.BuildingBlocks.Application.csproj" />
     <ProjectReference Include="..\..\Src\BuildingBlocks\Infrastructure\DigiPay.Template.BuildingBlocks.Persistence\DigiPay.Template.BuildingBlocks.Persistence.csproj" />
     <ProjectReference Include="..\..\Src\BuildingBlocks\Presentation\DigiPay.Template.BuildingBlocks.Presentation\DigiPay.Template.BuildingBlocks.Presentation.csproj" />
-    <ProjectReference Include="..\..\Src\Modules\FirstModule\Presentation\DigiPay.Template.FirstModule.Presention\DigiPay.Template.FirstModule.Presention.csproj" />
   </ItemGroup>
 
 </Project>

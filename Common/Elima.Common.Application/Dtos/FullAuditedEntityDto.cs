@@ -7,7 +7,7 @@ namespace Elima.Common.Application;
 /// This class can be inherited by DTO classes to implement <see cref="IFullAuditedObject"/> interface.
 /// </summary>
 [Serializable]
-public abstract class FullAuditedEntityDto : AuditedEntityDto, IFullAuditedObject
+public abstract record FullAuditedEntityDto : AuditedEntityDto, IFullAuditedObject
 {
     /// <inheritdoc />
     public bool IsDeleted { get; set; }
@@ -24,8 +24,12 @@ public abstract class FullAuditedEntityDto : AuditedEntityDto, IFullAuditedObjec
 /// </summary>
 /// <typeparam name="TPrimaryKey">Type of primary key</typeparam>
 [Serializable]
-public abstract class FullAuditedEntityDto<TPrimaryKey> : AuditedEntityDto<TPrimaryKey>, IFullAuditedObject
+public abstract record FullAuditedEntityDto<TPrimaryKey> : AuditedEntityDto<TPrimaryKey>, IFullAuditedObject
 {
+    protected FullAuditedEntityDto(AuditedEntityDto<TPrimaryKey> original) : base(original)
+    {
+    }
+
     /// <inheritdoc />
     public bool IsDeleted { get; set; }
 

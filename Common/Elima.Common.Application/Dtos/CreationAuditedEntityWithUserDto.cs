@@ -9,7 +9,7 @@ namespace Elima.Common.Application;
 /// </summary>
 /// <typeparam name="TUserDto">Type of the User DTO</typeparam>
 [Serializable]
-public abstract class CreationAuditedEntityWithUserDto<TUserDto> : CreationAuditedEntityDto, ICreationAuditedObject<TUserDto>
+public abstract record CreationAuditedEntityWithUserDto<TUserDto> : CreationAuditedEntityDto, ICreationAuditedObject<TUserDto>
 {
     public TUserDto? Creator { get; set; }
 }
@@ -22,7 +22,11 @@ public abstract class CreationAuditedEntityWithUserDto<TUserDto> : CreationAudit
 /// <typeparam name="TPrimaryKey">Type of primary key</typeparam>
 /// <typeparam name="TUserDto">Type of the User DTO</typeparam>
 [Serializable]
-public abstract class CreationAuditedEntityWithUserDto<TPrimaryKey, TUserDto> : CreationAuditedEntityDto<TPrimaryKey>, ICreationAuditedObject<TUserDto>
+public abstract record CreationAuditedEntityWithUserDto<TPrimaryKey, TUserDto> : CreationAuditedEntityDto<TPrimaryKey>, ICreationAuditedObject<TUserDto>
 {
+    protected CreationAuditedEntityWithUserDto(CreationAuditedEntityDto<TPrimaryKey> original) : base(original)
+    {
+    }
+
     public TUserDto? Creator { get; set; }
 }

@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace Microsoft.EntityFrameworkCore;
 
-public static class EntityFrameworkQueryableExtensions
+public static class EfQueryableExtensions1
 {
     /// <summary>
     /// Specifies the related objects to include in the query results.

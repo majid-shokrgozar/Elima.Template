@@ -14,12 +14,12 @@ namespace DigiPay.Template.WebApi.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
-        private readonly ISampleRepository _sampleRepository;
+        private readonly ICommandSampleRepository _sampleRepository;
         private readonly IUnitOfWork _unitOfWork;
 
         public WeatherForecastController(
             ILogger<WeatherForecastController> logger,
-            ISampleRepository sampleRepository,
+            ICommandSampleRepository sampleRepository,
             IUnitOfWork unitOfWork)
         {
             _logger = logger;

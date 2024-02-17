@@ -3,9 +3,9 @@ using FastEndpoints;
 using FluentValidation.Results;
 using MediatR;
 
-namespace DigiPay.Template.CoreModule.Presention.Samples.Create;
+namespace DigiPay.Template.CoreModule.Presentation.Samples;
 
-public class SampleCreateEndpoint : EndpointElimaResultWithMapping<SampleCreateRequest, SampleCreateResponse,SampleCreateCommand, SampleDto>
+public class SampleCreateEndpoint : EndpointElimaResultWithMapping<SampleCreateRequest, SampleCreateResponse, SampleCreateCommand, SampleDto>
 {
     private readonly ISender _sender;
 
@@ -28,7 +28,7 @@ public class SampleCreateEndpoint : EndpointElimaResultWithMapping<SampleCreateR
 
     public override Task<SampleCreateResponse> MapToResponseAsync(SampleDto e, CancellationToken ct = default)
     {
-        return Task.FromResult(new SampleCreateResponse(e.Name)); 
+        return Task.FromResult(new SampleCreateResponse(e.Name));
     }
     public override SampleCreateCommand MapToCommandOrQuery(SampleCreateRequest request)
     {

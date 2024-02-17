@@ -12,10 +12,10 @@ namespace DigiPay.Template.CoreModule.Application.UseCases.Samples.Create
 {
     public class SampleCreateCommandHandler : ICommandHandler<SampleCreateCommand, SampleDto>
     {
-        private readonly ISampleRepository _sampleRepository;
+        private readonly ICommandSampleRepository _sampleRepository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public SampleCreateCommandHandler(ISampleRepository sampleRepository, IUnitOfWork unitOfWork)
+        public SampleCreateCommandHandler(ICommandSampleRepository sampleRepository, IUnitOfWork unitOfWork)
         {
             _sampleRepository = sampleRepository;
             _unitOfWork = unitOfWork;
@@ -30,7 +30,7 @@ namespace DigiPay.Template.CoreModule.Application.UseCases.Samples.Create
             }, cancellationToken);
             await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-            return new SampleDto(sample.Name);
+            return new SampleDto(sample.Id.Value, sample.Name);
         }
     }
 }

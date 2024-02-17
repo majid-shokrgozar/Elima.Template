@@ -1,8 +1,9 @@
-﻿using DigiPay.Template.CoreModule.Domain.Samples;
+﻿using DigiPay.Template.CoreModule.Domain;
+using DigiPay.Template.CoreModule.Domain.Samples;
 using FastEndpoints;
 using FluentValidation;
 
-namespace DigiPay.Template.CoreModule.Presention.Samples.Create;
+namespace DigiPay.Template.CoreModule.Presentation.Samples.Create;
 
 public class SampleCreateValidation : Validator<SampleCreateRequest>
 {
