@@ -8,7 +8,7 @@ public class GetSampleListSpecification : Specification<Sample, SampleDto>
     public GetSampleListSpecification(SampleGetListQuery request)
     {
         Query
-            .Select(x => new SampleDto(x.Id.Value,x.Name))
+            .Select(x => SampleDto.MapFromEntity(x))
             .Skip(request.SkipCount)
             .Take(request.MaxResultCount)
             .Where(x => x.Name.Equals(request.Name),!string.IsNullOrEmpty(request.Name))

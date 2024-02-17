@@ -30,7 +30,7 @@ namespace DigiPay.Template.CoreModule.Application.UseCases.Samples.Create
             }, cancellationToken);
             await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-            return new SampleDto(sample.Id.Value, sample.Name);
+            return SampleDto.MapFromEntity(sample);
         }
     }
 }
