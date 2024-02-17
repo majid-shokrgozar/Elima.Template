@@ -36,6 +36,3 @@ public class SampleUpdateByIdEndpoint : EndpointElimaResultWithMapping<SampleUpd
         return new SampleUpdateByIdResponse(e.Id, e.Name);
     }
 }
-
-public record SampleUpdateByIdRequest(Guid Id, string Name);
-public record SampleUpdateByIdResponse(Guid Id, string Name);
